@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>scr_init_system();
+scr_init_configuration();
 
 room_goto_next();
 </string>

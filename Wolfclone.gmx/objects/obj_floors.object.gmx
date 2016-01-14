@@ -63,7 +63,7 @@ ceil_model = global._CEIL;
     var dx = abs(_x - obj_player.x);
     var dy = abs(_y - obj_player.y);
     
-    if (dx &gt; 400 || dy &gt; 400) continue;
+    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) continue;
     
     d3d_model_draw(floor_model, _x, _y, _z, tex);
 }
@@ -77,7 +77,7 @@ for (var i=1;i&lt;ceils_count;i+=1){
     var dx = abs(_x - obj_player.x);
     var dy = abs(_y - obj_player.y);
     
-    if (dx &gt; 400 || dy &gt; 400) continue;
+    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) continue;
     
     d3d_model_draw(ceil_model, _x, _y, _z, tex);
 }

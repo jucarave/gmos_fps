@@ -25,3 +25,5 @@ global._FLOOR = scr_create_floor(size);
 global._CEIL = scr_create_ceil(size);
 
 global._DOOR = scr_create_door(size, 4, size);
+
+global._SKYBOX = scr_create_skybox();

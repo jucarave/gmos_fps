@@ -33,6 +33,40 @@ scr_parse_tiles();
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var _x = obj_player.x;
+var _y = obj_player.y;
+var _z = obj_player.z + obj_player.height;
+
+shader_set(shd_skybox);
+d3d_model_draw(global._SKYBOX[0], _x, _y, _z, global._TEXTURES[TEX_SB_PY_001]);
+d3d_model_draw(global._SKYBOX[1], _x, _y, _z, global._TEXTURES[TEX_SB_NY_001]);
+d3d_model_draw(global._SKYBOX[2], _x, _y, _z, global._TEXTURES[TEX_SB_NX_001]);
+d3d_model_draw(global._SKYBOX[3], _x, _y, _z, global._TEXTURES[TEX_SB_PX_001]);
+d3d_model_draw(global._SKYBOX[4], _x, _y, _z, global._TEXTURES[TEX_SB_PZ_001]);
+d3d_model_draw(global._SKYBOX[5], _x, _y, _z, global._TEXTURES[TEX_SB_NZ_001]);
+shader_reset();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

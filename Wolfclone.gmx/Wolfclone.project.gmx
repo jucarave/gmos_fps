@@ -43,6 +43,16 @@
     <backgrounds name="Doors">
       <background>background\tex_d_001</background>
     </backgrounds>
+    <backgrounds name="Skyboxes">
+      <backgrounds name="DarkStormy">
+        <background>background\sky_int_px</background>
+        <background>background\sky_int_ny</background>
+        <background>background\sky_int_nz</background>
+        <background>background\sky_int_nx</background>
+        <background>background\sky_int_py</background>
+        <background>background\sky_int_pz</background>
+      </backgrounds>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -59,9 +69,11 @@
       <script>scripts\scr_create_floor.gml</script>
       <script>scripts\scr_create_ceil.gml</script>
       <script>scripts\scr_create_door.gml</script>
+      <script>scripts\scr_create_skybox.gml</script>
     </scripts>
     <scripts name="System">
       <script>scripts\scr_init_system.gml</script>
+      <script>scripts\scr_init_configuration.gml</script>
     </scripts>
     <scripts name="World Parser">
       <script>scripts\scr_parse_tiles.gml</script>
@@ -74,6 +86,9 @@
       <script>scripts\scr_get_input_direction.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_skybox.shader</shader>
+  </shaders>
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_system</object>
@@ -94,7 +109,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="34">
+  <constants number="40">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -122,6 +137,12 @@
     <constant name="TEX_C_001">9</constant>
     <constant name="TEX_C_002">10</constant>
     <constant name="TEX_D_001">11</constant>
+    <constant name="TEX_SB_NX_001">12</constant>
+    <constant name="TEX_SB_PX_001">13</constant>
+    <constant name="TEX_SB_NY_001">14</constant>
+    <constant name="TEX_SB_PY_001">15</constant>
+    <constant name="TEX_SB_NZ_001">16</constant>
+    <constant name="TEX_SB_PZ_001">17</constant>
     <constant name="GRID_W">32</constant>
     <constant name="GRID_HW">16</constant>
     <constant name="SM_STAND">0</constant>

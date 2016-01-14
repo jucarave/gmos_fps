@@ -60,7 +60,7 @@ render_y = y;
     var dx = abs(x - obj_player.x);
     var dy = abs(y - obj_player.y);
     
-    if (dx &gt; 400 || dy &gt; 400) exit;
+    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) exit;
 
     for (var i=0;i&lt;height;i+=1){
         var zz = z + (i * GRID_W);
