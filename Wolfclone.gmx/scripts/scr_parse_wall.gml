@@ -25,11 +25,10 @@ var block = instance_create(xx + GRID_HW, yy + GRID_HW, obj_block);
 block.block = scr_get_3d_tile_by_walls(walls);
 block.z = z;
 block.height = height;
-
-if (!_solid){ 
-    block.false_wall = true; 
-    block.x = -32;
-    block.y = -32;
-}
-
+block.solid = _solid;
 block.tex = scr_get_wall_texture(left, top);
+
+with (block){
+    var w = GRID_HW;
+    scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);
+}

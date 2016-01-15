@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>background_colour = c_black;
 
+solids[0] = -1;
+solidsCount = 1;
+
 scr_parse_tiles();
 </string>
           </argument>

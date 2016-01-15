@@ -27,5 +27,4 @@ global._TEXTURES[TEX_SB_NX_001] = background_get_texture(sky_int_nx);
 global._TEXTURES[TEX_SB_PX_001] = background_get_texture(sky_int_px);
 global._TEXTURES[TEX_SB_NY_001] = background_get_texture(sky_int_ny);
 global._TEXTURES[TEX_SB_PY_001] = background_get_texture(sky_int_py);
-global._TEXTURES[TEX_SB_NZ_001] = background_get_texture(sky_int_nz);
 global._TEXTURES[TEX_SB_PZ_001] = background_get_texture(sky_int_pz);

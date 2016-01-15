@@ -30,10 +30,6 @@ tex = -1;
 
 z = 0;
 height = 1;
-
-false_wall = false;
-render_x = x;
-render_y = y;
 </string>
           </argument>
         </arguments>
@@ -64,7 +60,7 @@ render_y = y;
 
     for (var i=0;i&lt;height;i+=1){
         var zz = z + (i * GRID_W);
-        d3d_model_draw(block, render_x, render_y, zz, tex);
+        d3d_model_draw(block, x, y, zz, tex);
     }
 }
 </string>

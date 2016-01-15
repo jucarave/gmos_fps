@@ -42,6 +42,9 @@ if (image_angle != 0){
     y_off = -GRID_HW;
     horizontal = false;
 }
+
+var w = GRID_HW;
+scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);
 </string>
           </argument>
         </arguments>

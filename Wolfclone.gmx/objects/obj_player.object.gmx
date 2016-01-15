@@ -77,14 +77,16 @@ if (dir != -1){
     if (xTo &lt; 0) ofx = -size;
     if (yTo &lt; 0) ofy = -size;
     
-    var ins = collision_rectangle(x, y-size, (x+ofx)+(xTo*6), y+size, obj_solid, true, false);
-    if (ins){ if (!ins.solid){ ins = false; } }
+    // var ins = collision_rectangle(x, y-size, (x+ofx)+(xTo*6), y+size, obj_solid, true, false);
+    // if (ins){ if (!ins.solid){ ins = false; } }
+    var ins = scr_collision_box(x, y-size, z, (x+ofx)+(xTo*6), y+size, z+GRID_HW);
     if (!ins){
         x += xTo * spd;
     }
     
-    var ins = collision_rectangle(x-size, y, x+size, (y-ofy)-(yTo*6), obj_solid, true, false);
-    if (ins){ if (!ins.solid){ ins = false; } }
+    // var ins = collision_rectangle(x-size, y, x+size, (y-ofy)-(yTo*6), obj_solid, true, false);
+    // if (ins){ if (!ins.solid){ ins = false; } }
+    var ins = scr_collision_box(x-size, y, z, x+size, (y-ofy)-(yTo*6), z+GRID_HW);
     if (!ins){
         y -= yTo * spd;
     }
@@ -207,6 +209,9 @@ if (CONF_MOUSE_VIEW){
     if (mx != 0 || my != 0){
         direction -= mx / 3;
         zdirection -= my / 3;
+        
+        if (zdirection &gt; 45) zdirection = 45;
+        else if (zdirection &lt; -45) zdirection = -45;
         
         display_mouse_set(screenX, screenY);
     }

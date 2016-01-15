@@ -47,7 +47,6 @@
       <backgrounds name="DarkStormy">
         <background>background\sky_int_px</background>
         <background>background\sky_int_ny</background>
-        <background>background\sky_int_nz</background>
         <background>background\sky_int_nx</background>
         <background>background\sky_int_py</background>
         <background>background\sky_int_pz</background>
@@ -74,6 +73,8 @@
     <scripts name="System">
       <script>scripts\scr_init_system.gml</script>
       <script>scripts\scr_init_configuration.gml</script>
+      <script>scripts\scr_collision_box.gml</script>
+      <script>scripts\scr_subscribe_box_collision.gml</script>
     </scripts>
     <scripts name="World Parser">
       <script>scripts\scr_parse_tiles.gml</script>
@@ -92,7 +93,7 @@
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_system</object>
-      <object>objects\room_master</object>
+      <object>objects\obj_room_master</object>
       <object>objects\obj_layer_configuration</object>
     </objects>
     <objects name="World">
@@ -109,7 +110,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="40">
+  <constants number="39">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -141,8 +142,7 @@
     <constant name="TEX_SB_PX_001">13</constant>
     <constant name="TEX_SB_NY_001">14</constant>
     <constant name="TEX_SB_PY_001">15</constant>
-    <constant name="TEX_SB_NZ_001">16</constant>
-    <constant name="TEX_SB_PZ_001">17</constant>
+    <constant name="TEX_SB_PZ_001">16</constant>
     <constant name="GRID_W">32</constant>
     <constant name="GRID_HW">16</constant>
     <constant name="SM_STAND">0</constant>
