@@ -90,11 +90,15 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_skybox.shader</shader>
   </shaders>
+  <fonts name="fonts">
+    <font>fonts\fnt_Debug</font>
+  </fonts>
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_system</object>
       <object>objects\obj_room_master</object>
       <object>objects\obj_layer_configuration</object>
+      <object>objects\obj_hud_debug</object>
     </objects>
     <objects name="World">
       <object>objects\obj_solid</object>

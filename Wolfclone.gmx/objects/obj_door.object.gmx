@@ -114,6 +114,8 @@ scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);
         solid = false;
     }
 }else if (state == SM_CLOSE){
+    solid = true;
+        
     if (openAng &gt; 0){
         openAng -= 8;
     }
@@ -121,7 +123,6 @@ scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);
     if (openAng &lt;= 0){
         openAng = 0;
         state = SM_STAND;
-        solid = true;
     }
 }
 </string>
