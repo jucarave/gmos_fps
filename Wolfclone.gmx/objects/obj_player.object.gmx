@@ -29,6 +29,9 @@
 height = 16;
 zdirection = 0;
 
+jog = 0;
+jog_dir = 1;
+
 state = SM_STAND;
 
 screenX = window_get_x() + 320;
@@ -77,18 +80,26 @@ if (dir != -1){
     if (xTo &lt; 0) ofx = -size;
     if (yTo &lt; 0) ofy = -size;
     
-    // var ins = collision_rectangle(x, y-size, (x+ofx)+(xTo*6), y+size, obj_solid, true, false);
-    // if (ins){ if (!ins.solid){ ins = false; } }
     var ins = scr_collision_box(x, y-size, z, (x+ofx)+(xTo*6), y+size, z+GRID_HW);
     if (!ins){
         x += xTo * spd;
     }
     
-    // var ins = collision_rectangle(x-size, y, x+size, (y-ofy)-(yTo*6), obj_solid, true, false);
-    // if (ins){ if (!ins.solid){ ins = false; } }
     var ins = scr_collision_box(x-size, y, z, x+size, (y-ofy)-(yTo*6), z+GRID_HW);
     if (!ins){
         y -= yTo * spd;
+    }
+    
+    jog += jog_dir * 0.3;
+    if (jog &gt;= 2 &amp;&amp; jog_dir == 1){ jog = 2; jog_dir = -1; }
+    if (jog &lt;= -2 &amp;&amp; jog_dir == -1){ jog = -2; jog_dir = 1; }
+}else{
+    if (jog != 0){
+        if (jog &gt; 0) dir = -1; else dir = 1;
+        
+        jog += dir * 0.5;
+        if (jog &lt;= 0 &amp;&amp; dir == -1){ jog = 0; jog_dir = 1; }
+        if (jog &gt;= 0 &amp;&amp; dir == 1){ jog = 0; jog_dir = 1; }
     }
 }
 </string>
@@ -295,9 +306,9 @@ if (keyboard_check_pressed(vk_escape)){
             <kind>1</kind>
             <string>var xt = x + cos(degtorad(direction));
 var yt = y - sin(degtorad(direction));
-var zt = z + height + sin(degtorad(zdirection));
+var zt = z + height + jog + sin(degtorad(zdirection));
 
-d3d_set_projection(x, y, z + height, xt, yt, zt, 0, 0, 1);
+d3d_set_projection(x, y, z + height + jog, xt, yt, zt, 0, 0, 1);
 </string>
           </argument>
         </arguments>

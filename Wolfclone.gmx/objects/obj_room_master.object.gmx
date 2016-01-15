@@ -55,7 +55,7 @@ scr_parse_tiles();
             <kind>1</kind>
             <string>var _x = obj_player.x;
 var _y = obj_player.y;
-var _z = obj_player.z + obj_player.height;
+var _z = obj_player.z + obj_player.height + obj_player.jog;
 
 shader_set(shd_skybox);
 d3d_model_draw(global._SKYBOX[0], _x, _y, _z, global._TEXTURES[TEX_SB_PY_001]);

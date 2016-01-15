@@ -1,23 +1,29 @@
 * Development notes:
 
-+ Create new collision function to retrieve multiple instances
-+ Fix collisions with walls, remove "fakeWalls"
-+ Remove bottom of skybox
-+ Limit zdirection of player
+* Doing
 
 * Features to develop
 
 + Jumping
-+ Jogging movement to avoid skating
 + Create weapons
 + Create enemies
 + Create debris and enviromental objects
 + Load 3D models
 + Add wall switches
 + Lock doors by keys or switches
-+ Create debug hud, make configurable most values
 + Added several heights for floors, allow player to walk over them
 + Pick items from the world
++ Improve subscription of box collitions
++ Create terminal for adapting values on live
+
+* Completed tasks
+
++ Remove bottom of skybox
++ Limit zdirection of player
++ Create new collision function to retrieve multiple instances
++ Fix collisions with walls, remove "fakeWalls"
++ Create debug hud
++ Jogging movement to avoid skating
 
 git config http.postBuffer 524288000
 git push
