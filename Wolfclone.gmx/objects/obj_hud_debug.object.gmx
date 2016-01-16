@@ -8,6 +8,185 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>open = false;
+y_pos = -200;
+
+prompt = "";
+last_command = "";
+
+cursor = "";
+console = ds_list_create();
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(console);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (cursor == ""){
+    cursor = "_";
+}else{
+    cursor = "";
+}
+
+if (open) alarm[0] = 15;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (open){
+    if (y_pos &lt; 0) y_pos += 15;
+    if (y_pos &gt;= 0) y_pos = 0;
+}else{
+    if (y_pos &gt; -200) y_pos -= 15;
+    if (y_pos &lt;= -200) y_pos = -200;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check_pressed(vk_tab)){
+    if (!open &amp;&amp; y_pos == -200){
+        open = true;
+        alarm[0] = 15;
+    }else if (open &amp;&amp; y_pos == 0){
+        open = false;
+        alarm[0] = -1;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Read Input
+if (open &amp;&amp; keyboard_check_pressed(vk_anykey)){
+    var lk = keyboard_lastkey;
+    
+    if (lk == 32 || (lk &gt;= 48 &amp;&amp; lk &lt;= 57) || (lk &gt;= 65 &amp;&amp; lk &lt;= 90) || (lk &gt;= 97 &amp;&amp; lk &lt;= 122)){
+        prompt += string_lower(chr(lk));
+    }else if (lk == 8){
+        prompt = string_delete(prompt, string_length(prompt), 1);
+    }else if (lk == 13 &amp;&amp; prompt != ""){
+        last_command = prompt;
+        scr_t_add_to_console(prompt);
+        scr_t_send_command(prompt);
+        prompt = "";
+    }else if (lk == 38){
+        prompt = last_command;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -25,19 +204,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-draw_set_alpha(0.8);
+            <string>var c1 = make_color_rgb(66,66,66);
+var c2 = make_color_rgb(0,0,0);
 
-draw_rectangle(474, 16, 624, 80, false);
-
+draw_rectangle_colour(0,y_pos,640,y_pos+200,c1,c1,c2,c2,false);
 
 draw_set_font(fnt_Debug);
 draw_set_color(c_white);
-draw_set_alpha(1);
 
-draw_text(482, 24, "FPS: " + string(fps));
-draw_text(482, 40, "INS: " + string(instance_count));
-draw_text(482, 56, "VER: " + global._VERSION);
+draw_text(8, y_pos+8, "Jucarave - GMOSS VER: " + string(global._VERSION) + ", FPS: " + string(fps));
+
+
+
+draw_text(8, y_pos+182, "] " + prompt + cursor);
+
+var len = ds_list_size(console) - 1;
+var y_msg = y_pos + 170;
+for (var i=len;i&gt;=0;i--){
+    var val = ds_list_find_value(console, i);
+    draw_text(8, y_msg, val);
+    
+    y_msg -= 10;
+}
 </string>
           </argument>
         </arguments>

@@ -30,5 +30,6 @@ block.tex = scr_get_wall_texture(left, top);
 
 with (block){
     var w = GRID_HW;
-    scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);
+    var h = GRID_W * (height - 1);
+    scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w+h);
 }

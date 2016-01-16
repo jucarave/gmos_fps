@@ -1,10 +1,12 @@
 * Development notes:
 
 * Doing
++ Create terminal for adapting values on live
 
 * Features to develop
 
 + Jumping
++ Open doors only that are in front
 + Create weapons
 + Create enemies
 + Create debris and enviromental objects
@@ -14,7 +16,6 @@
 + Added several heights for floors, allow player to walk over them
 + Pick items from the world
 + Improve subscription of box collitions
-+ Create terminal for adapting values on live
 
 * Completed tasks
 
