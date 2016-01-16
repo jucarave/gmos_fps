@@ -86,6 +86,7 @@
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_get_input_direction.gml</script>
+      <script>scripts\scr_move_to.gml</script>
     </scripts>
     <scripts name="Terminal">
       <script>scripts\scr_t_send_command.gml</script>
@@ -119,7 +120,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="39">
+  <constants number="40">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -159,6 +160,7 @@
     <constant name="SM_RUN">2</constant>
     <constant name="SM_OPEN">3</constant>
     <constant name="SM_CLOSE">4</constant>
+    <constant name="SM_JUMP">5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

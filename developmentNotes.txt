@@ -1,11 +1,9 @@
 * Development notes:
 
 * Doing
-+ Open doors only that are in front
 
 * Features to develop
 
-+ Jumping
 + Create weapons
 + Create enemies
 + Create debris and enviromental objects
@@ -25,6 +23,8 @@
 + Create debug hud
 + Jogging movement to avoid skating
 + Create terminal for adapting values on live
++ Open doors only that are in front
++ Jumping
 
 git config http.postBuffer 524288000
 git push

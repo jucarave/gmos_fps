@@ -16,7 +16,7 @@ var x2 = argument[3];
 var y2 = argument[4];
 var z2 = argument[5];
 
-var c = obj_room_master.solidsCount++;
+var c = obj_room_master.solids_count++;
 obj_room_master.solids[c, 0] = id;
 obj_room_master.solids[c, 1] = x1;
 obj_room_master.solids[c, 2] = y1;

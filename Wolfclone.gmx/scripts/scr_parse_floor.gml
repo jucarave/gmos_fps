@@ -17,7 +17,9 @@ var top = tile_get_top(tile);
 
 obj_floors.floors[obj_floors.floors_count, 0] = xx + GRID_HW;
 obj_floors.floors[obj_floors.floors_count, 1] = yy + GRID_HW;
-obj_floors.floors[obj_floors.floors_count, 2] = 0;
+obj_floors.floors[obj_floors.floors_count, 2] = z;
 obj_floors.floors[obj_floors.floors_count, 3] = scr_get_floor_texture(left, top);
 
 obj_floors.floors_count += 1;
+
+ds_grid_set(obj_room_master.floor_z_grid, xx / GRID_W, yy / GRID_W, z);

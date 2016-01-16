@@ -26,11 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>z = 0;
-height = 16;
+zspeed = 0;
 zdirection = 0;
+height = 16;
 
 jog = 0;
 jog_dir = 1;
+
+jump_spd = 0;
+jump_dir = 0;
 
 state = SM_STAND;
 
@@ -38,6 +42,83 @@ screenX = window_get_x() + 320;
 screenY = window_get_y() + 240;
 
 display_mouse_set(screenX, screenY);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (state == SM_JUMP){
+    z += zspeed;
+    zspeed -= obj_room_master.zgravity;
+    
+    if (zspeed &gt; 0){
+        var z_ceil = ds_grid_get(obj_room_master.ceil_z_grid, floor(x / GRID_W), floor(y / GRID_W));
+        if (z_ceil &gt; -100 &amp;&amp; z+height+2 &gt;= z_ceil){
+            z = z_ceil - height - 2;
+            zspeed = 0;
+        }
+    }else if (zspeed &lt; 0){
+        var z_floor = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
+        if (z &lt;= z_floor){
+            z = z_floor;
+            zspeed = 0;
+            state = SM_STAND;
+        }
+    }
+    
+    if (jump_spd &gt; 0){
+        scr_move_to(jump_dir, jump_spd);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Running with keyboard
+if (state == SM_STAND){
+    if (keyboard_check(vk_shift)){
+        state = SM_RUN;
+    }
+}else if (state == SM_RUN){
+    if (!keyboard_check(vk_shift)){
+        state = SM_STAND;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -64,28 +145,8 @@ display_mouse_set(screenX, screenY);
 if (keyboard_check_pressed(vk_escape)){
     game_end();
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// Stop all player actions if the console is open
 
+// Stop all player actions if the console is open
 if (instance_exists(obj_hud_debug)){
     if (obj_hud_debug.open){ 
         exit; 
@@ -113,44 +174,27 @@ if (instance_exists(obj_hud_debug)){
             <kind>1</kind>
             <string>// Movement with keyboard...
 
-var dir = scr_get_input_direction();
-
-if (dir != -1){
-    var spd = 3;
-    if (state == SM_CROUCH){ spd = 1.5; }else
-    if (state == SM_RUN){ spd = 5; }
+if (state == SM_STAND || state == SM_CROUCH || state == SM_RUN){
+    var dir = scr_get_input_direction();
     
-    var xTo = cos(degtorad(dir));
-    var yTo = sin(degtorad(dir));
-    
-    var size = GRID_HW - 2;
-    
-    var ofx = size;
-    var ofy = size;
-    
-    if (xTo &lt; 0) ofx = -size;
-    if (yTo &lt; 0) ofy = -size;
-    
-    var ins = scr_collision_box(x, y-size, z, (x+ofx)+(xTo*6), y+size, z+GRID_HW);
-    if (!ins){
-        x += xTo * spd;
-    }
-    
-    var ins = scr_collision_box(x-size, y, z, x+size, (y-ofy)-(yTo*6), z+GRID_HW);
-    if (!ins){
-        y -= yTo * spd;
-    }
-    
-    jog += jog_dir * 0.3;
-    if (jog &gt;= 2 &amp;&amp; jog_dir == 1){ jog = 2; jog_dir = -1; }
-    if (jog &lt;= -2 &amp;&amp; jog_dir == -1){ jog = -2; jog_dir = 1; }
-}else{
-    if (jog != 0){
-        if (jog &gt; 0) dir = -1; else dir = 1;
+    if (dir != -1 ){
+        var spd = 3;
+        if (state == SM_CROUCH){ spd = 1.5; }else
+        if (state == SM_RUN){ spd = 5; }
         
-        jog += dir * 0.5;
-        if (jog &lt;= 0 &amp;&amp; dir == -1){ jog = 0; jog_dir = 1; }
-        if (jog &gt;= 0 &amp;&amp; dir == 1){ jog = 0; jog_dir = 1; }
+        scr_move_to(dir, spd);
+        
+        jog += jog_dir * 0.3;
+        if (jog &gt;= 2 &amp;&amp; jog_dir == 1){ jog = 2; jog_dir = -1; }
+        if (jog &lt;= -2 &amp;&amp; jog_dir == -1){ jog = -2; jog_dir = 1; }
+    }else{
+        if (jog != 0){
+            if (jog &gt; 0) dir = -1; else dir = 1;
+            
+            jog += dir * 0.5;
+            if (jog &lt;= 0 &amp;&amp; dir == -1){ jog = 0; jog_dir = 1; }
+            if (jog &gt;= 0 &amp;&amp; dir == 1){ jog = 0; jog_dir = 1; }
+        }
     }
 }
 </string>
@@ -205,39 +249,9 @@ if (state == SM_STAND){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Running with keyboard
-if (state == SM_STAND){
-    if (keyboard_check(vk_shift)){
-        state = SM_RUN;
-    }
-}else if (state == SM_RUN){
-    if (!keyboard_check(vk_shift)){
-        state = SM_STAND;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>// Rotation with keyboard
 
-var hor = (keyboard_check(ord('Q')) - keyboard_check(ord('E')));
+var hor = (keyboard_check(vk_left) - keyboard_check(vk_right));
 
 if (hor != 0){
     direction += 3 * hor;
@@ -300,7 +314,7 @@ if (global._MLOOK){
             <kind>1</kind>
             <string>// Execute actions
 
-if (keyboard_check_pressed(vk_space)){
+if (keyboard_check_pressed(ord('E'))){
     var tar_x = x + cos(degtorad(direction)) * GRID_W;
     var tar_y = y - sin(degtorad(direction)) * GRID_W;
     
@@ -309,6 +323,38 @@ if (keyboard_check_pressed(vk_space)){
         if (ins.z-GRID_HW &lt; z+height &amp;&amp; ins.z+GRID_HW &gt; z){
             ins.activated = true;
         }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Jumping
+if (state == SM_STAND &amp;&amp; keyboard_check_pressed(vk_space)){
+    state = SM_JUMP;
+    zspeed = 4;
+    
+    jump_spd = 0;
+    jump_dir = scr_get_input_direction();
+    
+    if (jump_dir != -1){
+        jump_spd = 3;
     }
 }
 </string>

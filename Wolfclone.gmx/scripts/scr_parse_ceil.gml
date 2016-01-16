@@ -21,3 +21,5 @@ obj_floors.ceils[obj_floors.ceils_count, 2] = z;
 obj_floors.ceils[obj_floors.ceils_count, 3] = scr_get_ceil_texture(left, top);
 
 obj_floors.ceils_count += 1;
+
+ds_grid_set(obj_room_master.ceil_z_grid, xx / GRID_W, yy / GRID_W, z);

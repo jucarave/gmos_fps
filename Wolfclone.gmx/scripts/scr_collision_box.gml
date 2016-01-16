@@ -20,7 +20,7 @@ if (x2 < x1){ var xh = x2; x2 = x1; x1 = xh; }
 if (y2 < y1){ var yh = y2; y2 = y1; y1 = yh; }
 if (z2 < z1){ var zh = z2; z2 = z1; z1 = zh; }
 
-for (var i=1;i<obj_room_master.solidsCount;i++){
+for (var i=1;i<obj_room_master.solids_count;i++){
     var s_id = obj_room_master.solids[i, 0];
     
     var s_x1 = obj_room_master.solids[i, 1];
