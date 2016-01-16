@@ -456,9 +456,5 @@
     <option_xbone_texture_page>1024</option_xbone_texture_page>
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
-  <ConfigConstants>
-    <constants number="1">
-      <constant name="CONF_MOUSE_VIEW">1</constant>
-    </constants>
-  </ConfigConstants>
+  <ConfigConstants/>
 </Config>

@@ -264,7 +264,7 @@ if (hor != 0){
             <kind>1</kind>
             <string>// Rotation with mouse
 
-if (CONF_MOUSE_VIEW){
+if (global._MLOOK){
     var mx = display_mouse_get_x() - screenX;
     var my = display_mouse_get_y() - screenY;
     
@@ -306,7 +306,9 @@ if (keyboard_check_pressed(vk_space)){
     
     var ins = collision_line(x, y, tar_x, tar_y, obj_door, false, false);
     if (ins){
-        ins.activated = true;
+        if (ins.z-GRID_HW &lt; z+height &amp;&amp; ins.z+GRID_HW &gt; z){
+            ins.activated = true;
+        }
     }
 }
 </string>

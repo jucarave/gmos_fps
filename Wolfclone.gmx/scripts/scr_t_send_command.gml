@@ -11,11 +11,12 @@ if (str == "help"){
     scr_t_add_to_console('   "help": Displays all the available commands');
     scr_t_add_to_console('   "player position": Displays the current position of the player');
     scr_t_add_to_console('   "player position $x $y $z": Sets the position of the player to the vars $x, $y and $z');
-}else if (str == "player position"){
+    scr_t_add_to_console('   "mouselook [on|off]": Activates/Deactivates looking with the mouse');
+}else if (str == "player position"){ // player position
     // Get player position
     var out = " > X: " + string(obj_player.x) + "; Y: " + string(obj_player.y) + "; Z: " + string(obj_player.z);
     scr_t_add_to_console(out);
-}else if (string_pos("player position ", str) == 1){
+}else if (string_pos("player position ", str) == 1){ // player position $x $y $z
     // Set player position
     var position = string_replace(str, "player position ", "");
     var coords = scr_string_split(position, ' ', 3);
@@ -27,6 +28,16 @@ if (str == "help"){
     obj_player.z = real(coords[3]);
     
     scr_t_send_command("player position");
+}else if (string_pos("mouselook ", str) == 1){ // mouselook [on|off]
+    // Activates/Deactivates looking with the mouse
+    var command = string_replace(str, "mouselook ", "");
+    if (command == "on"){
+        global._MLOOK = true;
+    }else if (command == "off"){
+        global._MLOOK = false;
+    }else{
+        return scr_t_send_command("Invalid");
+    }
 }else{
     scr_t_add_to_console(" > Invalid command!");
 }
