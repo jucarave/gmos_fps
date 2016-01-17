@@ -157,7 +157,7 @@ if (state == SM_STAND){
     
     if (gx != prev_grid_x || gy != prev_grid_y){
         var zt = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
-        if (abs(zt - z_target) &lt;= 5){
+        if ((zt - z_target &lt;= 5 &amp;&amp; zt &gt; z_target) || (zt &lt; z_target)){
             z_target = zt;
         }
     }

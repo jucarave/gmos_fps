@@ -21,7 +21,7 @@ for (var xx=0;xx<room_width;xx+=32){
                 if (tile != -1){
                     switch (layer.type){
                         case "Wall":
-                            scr_parse_wall(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_HEIGHT], layer.layers[k, LY_SOLID]);
+                            scr_parse_wall(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH], layer.layers[k, LY_HEIGHT], layer.layers[k, LY_SOLID]);
                             break;
                         
                         case "Floor":
