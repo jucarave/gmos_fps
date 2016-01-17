@@ -6,7 +6,6 @@
 
 * Features to develop
 
-+ Add walls to floors with different heights
 + Create weapons
 + Create enemies
 + Create debris and enviromental objects
@@ -30,6 +29,7 @@
 + Merge layer configuration on one instance per type of layer
 + Added several heights for floors, allow player to walk over them
 + Modify walls next to each other with diferent heights
++ Add walls to floors with different heights
 
 git config http.postBuffer 524288000
 git push
