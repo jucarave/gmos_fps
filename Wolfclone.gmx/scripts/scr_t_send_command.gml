@@ -9,9 +9,20 @@ var str = argument[0];
 if (str == "help"){
     // Displays all the available commands
     scr_t_add_to_console('   "help": Displays all the available commands');
+    scr_t_add_to_console('   "gravity [on|off]": Activates/Deactivates gravity');
     scr_t_add_to_console('   "player position": Displays the current position of the player');
     scr_t_add_to_console('   "player position $x $y $z": Sets the position of the player to the vars $x, $y and $z');
     scr_t_add_to_console('   "mouselook [on|off]": Activates/Deactivates looking with the mouse');
+}else if (string_pos("gravity ", str) == 1){
+    // Activates/Deactivates gravity
+    var command = string_replace(str, "gravity ", "");
+    if (command == "on"){
+        global._ZGRAVITY = true;
+    }else if (command == "off"){
+        global._ZGRAVITY = false;
+    }else{
+        return scr_t_send_command("Invalid");
+    }
 }else if (str == "player position"){ // player position
     // Get player position
     var out = " > X: " + string(obj_player.x) + "; Y: " + string(obj_player.y) + "; Z: " + string(obj_player.z);

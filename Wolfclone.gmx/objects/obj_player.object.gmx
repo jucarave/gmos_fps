@@ -26,8 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>z = 0;
-zspeed = 0;
-zdirection = 0;
+z_speed = 0;
+z_direction = 0;
+z_target = 0;
 height = 16;
 
 jog = 0;
@@ -35,6 +36,9 @@ jog_dir = 1;
 
 jump_spd = 0;
 jump_dir = 0;
+
+prev_grid_x = floor(x / GRID_W);
+prev_grid_y = floor(y / GRID_W);
 
 state = SM_STAND;
 
@@ -64,21 +68,28 @@ display_mouse_set(screenX, screenY);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (state == SM_JUMP){
-    z += zspeed;
-    zspeed -= obj_room_master.zgravity;
+            <string>if (!global._ZGRAVITY &amp;&amp; z_speed &lt; 0){ 
+    z_speed = 0; 
+    state = SM_STAND; 
+}
+
+if (state == SM_JUMP){
+    z += z_speed;
+    z_speed -= obj_room_master.zgravity;
     
-    if (zspeed &gt; 0){
+    if (z_speed &gt; 0){
         var z_ceil = ds_grid_get(obj_room_master.ceil_z_grid, floor(x / GRID_W), floor(y / GRID_W));
         if (z_ceil &gt; -100 &amp;&amp; z+height+2 &gt;= z_ceil){
             z = z_ceil - height - 2;
-            zspeed = 0;
+            z_speed = 0;
         }
-    }else if (zspeed &lt; 0){
+    }else if (z_speed &lt; 0){
         var z_floor = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
         if (z &lt;= z_floor){
             z = z_floor;
-            zspeed = 0;
+            z_target = z;
+            z_speed = 0;
+            jump_spd = 0;
             state = SM_STAND;
         }
     }
@@ -117,6 +128,56 @@ if (state == SM_STAND){
 }else if (state == SM_RUN){
     if (!keyboard_check(vk_shift)){
         state = SM_STAND;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global._ZGRAVITY &amp;&amp; (state == SM_STAND || state == SM_RUN || state == SM_CROUCH)){
+    // Search next z target
+    var gx = floor(x / GRID_W);
+    var gy = floor(y / GRID_W);
+    
+    if (gx != prev_grid_x || gy != prev_grid_y){
+        var zt = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
+        if (abs(zt - z_target) &lt;= 5){
+            z_target = zt;
+        }
+    }
+    
+    prev_grid_x = gx;
+    prev_grid_y = gy;
+    
+    // Move to target
+    if (z &lt; z_target){
+        z += 2;
+        if (z &gt;= z_target){ z = z_target; }
+    }else if (z &gt; z_target){
+        state = SM_JUMP;
+        
+        jump_dir = scr_get_input_direction();
+        if (jump_dir != -1){
+            jump_spd = 3;
+            if (state == SM_CROUCH){ jump_spd = 1.5; }else
+            if (state == SM_RUN){ jump_spd = 5; }
+        }
     }
 }
 </string>
@@ -284,10 +345,10 @@ if (global._MLOOK){
     
     if (mx != 0 || my != 0){
         direction -= mx / 3;
-        zdirection -= my / 3;
+        z_direction -= my / 3;
         
-        if (zdirection &gt; 45) zdirection = 45;
-        else if (zdirection &lt; -45) zdirection = -45;
+        if (z_direction &gt; 45) z_direction = 45;
+        else if (z_direction &lt; -45) z_direction = -45;
         
         display_mouse_set(screenX, screenY);
     }
@@ -347,7 +408,7 @@ if (keyboard_check_pressed(ord('E'))){
             <kind>1</kind>
             <string>// Jumping
 if ((state == SM_STAND || state == SM_RUN) &amp;&amp; keyboard_check_pressed(vk_space)){
-    zspeed = 4;
+    z_speed = 4;
     
     jump_spd = 0;
     jump_dir = scr_get_input_direction();
@@ -383,7 +444,7 @@ if ((state == SM_STAND || state == SM_RUN) &amp;&amp; keyboard_check_pressed(vk_
             <kind>1</kind>
             <string>var xt = x + cos(degtorad(direction));
 var yt = y - sin(degtorad(direction));
-var zt = z + height + jog + sin(degtorad(zdirection));
+var zt = z + height + jog + sin(degtorad(z_direction));
 
 d3d_set_projection(x, y, z + height + jog, xt, yt, zt, 0, 0, 1);
 </string>

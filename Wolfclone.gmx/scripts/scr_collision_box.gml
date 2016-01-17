@@ -36,7 +36,7 @@ for (var i=1;i<obj_room_master.solids_count;i++){
     if (y2 < s_y1) continue;
     if (y1 >= s_y2) continue;
     if (z2 < s_z1) continue;
-    if (z1 >= s_z2) continue;
+    if (z1 >= s_z2 - 5) continue;
     
     return s_id;
 }

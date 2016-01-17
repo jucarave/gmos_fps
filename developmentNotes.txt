@@ -2,6 +2,8 @@
 
 * Doing
 
+
+
 * Features to develop
 
 + Create weapons
@@ -10,9 +12,9 @@
 + Load 3D models
 + Add wall switches
 + Lock doors by keys or switches
-+ Added several heights for floors, allow player to walk over them
 + Pick items from the world
-+ Improve subscription of box collitions
++ Improve subscription of box collitions (by sectors)
++ Add walls to floors with different heights
 
 * Completed tasks
 
@@ -26,6 +28,7 @@
 + Open doors only that are in front
 + Jumping
 + Merge layer configuration on one instance per type of layer
++ Added several heights for floors, allow player to walk over them
 
 git config http.postBuffer 524288000
 git push
