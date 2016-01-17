@@ -83,6 +83,8 @@
       <script>scripts\scr_parse_floor.gml</script>
       <script>scripts\scr_parse_ceil.gml</script>
       <script>scripts\scr_get_tile_surrounds.gml</script>
+      <script>scripts\scr_get_next_lower_floor.gml</script>
+      <script>scripts\scr_add_under_floor_walls.gml</script>
     </scripts>
     <scripts name="Player">
       <script>scripts\scr_get_input_direction.gml</script>
@@ -120,7 +122,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="45">
+  <constants number="47">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -166,6 +168,8 @@
     <constant name="LY_Z">1</constant>
     <constant name="LY_SOLID">2</constant>
     <constant name="LY_HEIGHT">3</constant>
+    <constant name="LY_WALL_L">4</constant>
+    <constant name="LY_WALL_T">5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

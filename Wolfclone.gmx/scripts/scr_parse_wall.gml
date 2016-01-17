@@ -1,27 +1,26 @@
 /*
- * scr_parse_wall(tile, x, y, z, depth, height, solid)
+ * scr_parse_wall(x, y, z, tl, tt, depth, height, solid)
  *
- * argument[0]: Tile in a wall layer
- * argument[1]: X position of the block
- * argument[2]: Y Position of the block
- * argument[3]: Z position of the base of the block
- * argument[4]: Depth of the tile
- * argument[5]: Height in units
- * argument[6]: Is the wall solid
+ * argument[0]: X position of the block
+ * argument[1]: Y Position of the block
+ * argument[2]: Z position of the base of the block
+ * argument[3]: Tile left position of the texture
+ * argument[4]: Tile top position of the texture
+ * argument[5]: Depth of the tile
+ * argument[6]: Height in units
+ * argument[7]: Is the wall solid
  */
  
-var tile = argument[0];
-var xx = argument[1];
-var yy = argument[2];
-var z = argument[3] + GRID_HW;
-var _depth = argument[4];
-var height = argument[5];
-var _solid = argument[6];
+var xx = argument[0];
+var yy = argument[1];
+var z = argument[2] + GRID_HW;
+var left = argument[3];
+var top = argument[4];
+var _depth = argument[5];
+var height = argument[6];
+var _solid = argument[7];
 
-var left = tile_get_left(tile);
-var top = tile_get_top(tile);
-
-var walls = scr_get_tile_surrounds(depth, xx, yy);
+var walls = scr_get_tile_surrounds(_depth, xx, yy);
 
 var block = instance_create(xx + GRID_HW, yy + GRID_HW, obj_block);
 block.block = scr_get_3d_tile_by_walls(walls);

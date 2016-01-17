@@ -21,11 +21,13 @@ for (var xx=0;xx<room_width;xx+=32){
                 if (tile != -1){
                     switch (layer.type){
                         case "Wall":
-                            scr_parse_wall(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH], layer.layers[k, LY_HEIGHT], layer.layers[k, LY_SOLID]);
+                            var left = tile_get_left(tile);
+                            var top = tile_get_top(tile);
+                            scr_parse_wall(xx, yy, layer.layers[k, LY_Z], left, top, layer.layers[k, LY_DEPTH], layer.layers[k, LY_HEIGHT], layer.layers[k, LY_SOLID]);
                             break;
                         
                         case "Floor":
-                            scr_parse_floor(tile, xx, yy, layer.layers[k, LY_Z]);
+                            scr_parse_floor(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH]);
                             break;
                         
                         case "Ceil":
@@ -45,3 +47,6 @@ for (var i=0;i<len;i+=1){
         tile_layer_delete(layer.layers[j, LY_DEPTH]);
     }
 }
+
+// Add walls under floors
+scr_add_under_floor_walls();

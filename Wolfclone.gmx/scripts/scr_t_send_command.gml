@@ -34,9 +34,12 @@ if (str == "help"){
     
     if (coords[0] != 4){ return scr_t_send_command("Invalid"); }
 
-    obj_player.x = real(coords[1]);
-    obj_player.y = real(coords[2]);
-    obj_player.z = real(coords[3]);
+    if (coords[1] != "x")
+        obj_player.x = real(coords[1]);
+    if (coords[2] != "y")
+        obj_player.y = real(coords[2]);
+    if (coords[3] != "z")
+        obj_player.z = real(coords[3]);
     
     scr_t_send_command("player position");
 }else if (string_pos("mouselook ", str) == 1){ // mouselook [on|off]
