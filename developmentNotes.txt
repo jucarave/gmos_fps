@@ -25,6 +25,7 @@
 + Create terminal for adapting values on live
 + Open doors only that are in front
 + Jumping
++ Merge layer configuration on one instance per type of layer
 
 git config http.postBuffer 524288000
 git push

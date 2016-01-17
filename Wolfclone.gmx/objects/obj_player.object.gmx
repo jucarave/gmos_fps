@@ -346,8 +346,7 @@ if (keyboard_check_pressed(ord('E'))){
           <argument>
             <kind>1</kind>
             <string>// Jumping
-if (state == SM_STAND &amp;&amp; keyboard_check_pressed(vk_space)){
-    state = SM_JUMP;
+if ((state == SM_STAND || state == SM_RUN) &amp;&amp; keyboard_check_pressed(vk_space)){
     zspeed = 4;
     
     jump_spd = 0;
@@ -355,7 +354,10 @@ if (state == SM_STAND &amp;&amp; keyboard_check_pressed(vk_space)){
     
     if (jump_dir != -1){
         jump_spd = 3;
+        if (state == SM_RUN){ jump_spd = 5; }
     }
+    
+    state = SM_JUMP;
 }
 </string>
           </argument>

@@ -120,7 +120,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="40">
+  <constants number="44">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -161,6 +161,10 @@
     <constant name="SM_OPEN">3</constant>
     <constant name="SM_CLOSE">4</constant>
     <constant name="SM_JUMP">5</constant>
+    <constant name="LY_DEPTH">0</constant>
+    <constant name="LY_Z">1</constant>
+    <constant name="LY_SOLID">2</constant>
+    <constant name="LY_HEIGHT">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

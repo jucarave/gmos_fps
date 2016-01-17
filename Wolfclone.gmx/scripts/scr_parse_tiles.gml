@@ -16,20 +16,22 @@ for (var xx=0;xx<room_width;xx+=32){
         for (var i=0;i<len;i+=1){
             var layer = layers[i];
             
-            var tile = tile_layer_find(layer.layer_id, xx, yy);
-            if (tile != -1){
-                switch (layer.type){
-                    case "Wall":
-                        scr_parse_wall(tile, xx, yy, layer.z, layer.height, layer.solid);
-                        break;
-                    
-                    case "Floor":
-                        scr_parse_floor(tile, xx, yy, layer.z);
-                        break;
-                    
-                    case "Ceil":
-                        scr_parse_ceil(tile, xx, yy, layer.z);
-                        break;
+            for (var k=0;k<layer.layers_count;k++){
+                var tile = tile_layer_find(layer.layers[k, LY_DEPTH], xx, yy);
+                if (tile != -1){
+                    switch (layer.type){
+                        case "Wall":
+                            scr_parse_wall(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_HEIGHT], layer.layers[k, LY_SOLID]);
+                            break;
+                        
+                        case "Floor":
+                            scr_parse_floor(tile, xx, yy, layer.layers[k, LY_Z]);
+                            break;
+                        
+                        case "Ceil":
+                            scr_parse_ceil(tile, xx, yy, layer.layers[k, LY_Z]);
+                            break;
+                    }
                 }
             }
         }
@@ -39,5 +41,7 @@ for (var xx=0;xx<room_width;xx+=32){
 // Delete 2D Layers
 for (var i=0;i<len;i+=1){
     var layer = layers[i];
-    tile_layer_delete(layer.layer_id)
+    for (var j=0;j<layer.layers_count;j++){
+        tile_layer_delete(layer.layers[j, LY_DEPTH]);
+    }
 }
