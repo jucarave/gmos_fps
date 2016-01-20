@@ -11,5 +11,6 @@ texture_set_interpolation(false);
 
 scr_create_3d_tiles();
 scr_load_textures();
+scr_create_weapons();
 
 draw_set_color(c_white);

@@ -25,41 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>solids[0] = -1;
-solids_count = 1;
-
-zgravity = 0.5;
-
-floor_z_grid = ds_grid_create(room_width / GRID_W, room_height / GRID_W);
-ceil_z_grid = ds_grid_create(room_width / GRID_W, room_height / GRID_W);
-
-ds_grid_clear(ceil_z_grid, -100);
-
-scr_parse_tiles();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ds_grid_destroy(floor_z_grid);
-ds_grid_destroy(ceil_z_grid);
+            <string>model = global._HANDGUN;
+tex = global._TEXTURES[TEX_HANDGUN];
+z = 12;
 </string>
           </argument>
         </arguments>
@@ -82,17 +50,14 @@ ds_grid_destroy(ceil_z_grid);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var _x = obj_player.x;
-var _y = obj_player.y;
-var _z = obj_player.z + obj_player.height + obj_player.jog;
+            <string>//direction += 3;
 
-shader_set(shd_skybox);
-d3d_model_draw(global._SKYBOX[0], _x, _y, _z, global._TEXTURES[TEX_SB_PY_001]);
-d3d_model_draw(global._SKYBOX[1], _x, _y, _z, global._TEXTURES[TEX_SB_NY_001]);
-d3d_model_draw(global._SKYBOX[2], _x, _y, _z, global._TEXTURES[TEX_SB_NX_001]);
-d3d_model_draw(global._SKYBOX[3], _x, _y, _z, global._TEXTURES[TEX_SB_PX_001]);
-d3d_model_draw(global._SKYBOX[4], _x, _y, _z, global._TEXTURES[TEX_SB_PZ_001]);
-shader_reset();
+d3d_transform_set_identity();
+d3d_transform_set_translation(0, 0, 0);
+d3d_transform_add_rotation_z(direction);
+d3d_transform_add_translation(x, y, z);
+d3d_model_draw(model, 0, 0, 0, tex);
+d3d_transform_set_identity();
 </string>
           </argument>
         </arguments>

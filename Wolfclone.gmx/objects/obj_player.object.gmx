@@ -184,6 +184,33 @@ if (state == SM_STAND){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Check for items
+var size = 14;
+var ins = collision_rectangle(x-size,y-size,x+size,y+size,obj_item,false,false);
+
+if (ins){
+    scr_pick_item(ins);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -442,11 +469,19 @@ if ((state == SM_STAND || state == SM_RUN) &amp;&amp; keyboard_check_pressed(vk_
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xt = x + cos(degtorad(direction));
-var yt = y - sin(degtorad(direction));
-var zt = z + height + jog + sin(degtorad(z_direction));
+            <string>var _z = z + height + jog;
 
-d3d_set_projection(x, y, z + height + jog, xt, yt, zt, 0, 0, 1);
+var deg = degtorad(direction);
+var zdeg = degtorad(z_direction);
+
+var cs = cos(zdeg);
+var xt = x + cos(deg) * cs;
+var yt = y - sin(deg) * cs;
+var zt = _z + sin(zdeg);
+
+d3d_set_projection(x, y, _z, xt, yt, zt, 0, 0, 1);
+
+scr_draw_weapon_fp();
 </string>
           </argument>
         </arguments>

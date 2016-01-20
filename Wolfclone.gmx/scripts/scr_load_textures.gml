@@ -28,3 +28,6 @@ global._TEXTURES[TEX_SB_PX_001] = background_get_texture(sky_int_px);
 global._TEXTURES[TEX_SB_NY_001] = background_get_texture(sky_int_ny);
 global._TEXTURES[TEX_SB_PY_001] = background_get_texture(sky_int_py);
 global._TEXTURES[TEX_SB_PZ_001] = background_get_texture(sky_int_pz);
+
+// Objects
+global._TEXTURES[TEX_HANDGUN] = background_get_texture(tex_handGun);

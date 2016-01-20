@@ -9,7 +9,7 @@
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
-  <showcolour>-1</showcolour>
+  <showcolour>0</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -60,6 +60,7 @@
     <instance objName="obj_door" x="112" y="240" name="inst_96A4204B" locked="0" code="var w = GRID_HW;&#xA;scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="272" y="144" name="inst_E726C934" locked="0" code="z = 20 + GRID_HW;&#xA;&#xA;var w = GRID_HW;&#xA;scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="-90"/>
     <instance objName="obj_hud_debug" x="16" y="0" name="inst_B838851A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_weapon" x="144" y="144" name="inst_B349E193" locked="0" code="z = 4;&#xA;scr_get_weapon(WP_HGUN);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bck_wall_tiles" x="256" y="128" w="32" h="32" xo="32" yo="0" id="10000789" name="inst_4AF83C23" depth="1000200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -3,16 +3,14 @@
 * Doing
 
 
-
 * Features to develop
 
++ Fix find znear floor (not point but rectangle)
 + Create weapons
 + Create enemies
 + Create debris and enviromental objects
-+ Load 3D models
 + Add wall switches
 + Lock doors by keys or switches
-+ Pick items from the world
 + Improve subscription of box collitions (by sectors)
 
 * Completed tasks
@@ -30,6 +28,8 @@
 + Added several heights for floors, allow player to walk over them
 + Modify walls next to each other with diferent heights
 + Add walls to floors with different heights
++ Load 3D models
++ Pick items from the world
 
 git config http.postBuffer 524288000
 git push
