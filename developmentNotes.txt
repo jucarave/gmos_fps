@@ -2,11 +2,11 @@
 
 * Doing
 
-
 * Features to develop
 
-+ Fix find znear floor (not point but rectangle)
-+ Create weapons
++ Fire with weapons
++ Add decals bullet holes
++ Pick ammunition
 + Create enemies
 + Create debris and enviromental objects
 + Add wall switches
@@ -30,6 +30,8 @@
 + Add walls to floors with different heights
 + Load 3D models
 + Pick items from the world
++ Create weapons
++ Fix find znear floor (not point but rectangle)
 
 git config http.postBuffer 524288000
 git push

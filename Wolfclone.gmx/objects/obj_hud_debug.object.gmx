@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1000</depth>
+  <depth>-1010</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -204,9 +204,7 @@ if (open &amp;&amp; keyboard_check_pressed(vk_anykey)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (view_current != 1){ exit; }
-
-var c1 = make_color_rgb(66,66,66);
+            <string>var c1 = make_color_rgb(66,66,66);
 var c2 = make_color_rgb(0,0,0);
 
 draw_rectangle_colour(0,y_pos,640,y_pos+200,c1,c1,c2,c2,false);

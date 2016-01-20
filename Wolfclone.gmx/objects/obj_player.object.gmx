@@ -84,7 +84,8 @@ if (state == SM_JUMP){
             z_speed = 0;
         }
     }else if (z_speed &lt; 0){
-        var z_floor = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
+        // var z_floor = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
+        var z_floor = scr_find_z_floor();
         if (z &lt;= z_floor){
             z = z_floor;
             z_target = z;
@@ -152,18 +153,7 @@ if (state == SM_STAND){
             <kind>1</kind>
             <string>if (global._ZGRAVITY &amp;&amp; (state == SM_STAND || state == SM_RUN || state == SM_CROUCH)){
     // Search next z target
-    var gx = floor(x / GRID_W);
-    var gy = floor(y / GRID_W);
-    
-    if (gx != prev_grid_x || gy != prev_grid_y){
-        var zt = ds_grid_get(obj_room_master.floor_z_grid, floor(x / GRID_W), floor(y / GRID_W));
-        if ((zt - z_target &lt;= 5 &amp;&amp; zt &gt; z_target) || (zt &lt; z_target)){
-            z_target = zt;
-        }
-    }
-    
-    prev_grid_x = gx;
-    prev_grid_y = gy;
+    z_target = scr_find_z_floor();
     
     // Move to target
     if (z &lt; z_target){
