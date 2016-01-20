@@ -480,8 +480,6 @@ var yt = y - sin(deg) * cs;
 var zt = _z + sin(zdeg);
 
 d3d_set_projection(x, y, _z, xt, yt, zt, 0, 0, 1);
-
-scr_draw_weapon_fp();
 </string>
           </argument>
         </arguments>

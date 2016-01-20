@@ -144,7 +144,9 @@ if (image_angle != 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>d3d_transform_set_identity();
+            <string>if (view_current != 0){ exit; }
+
+d3d_transform_set_identity();
 d3d_transform_set_translation(16, 0, 0);
 d3d_transform_add_rotation_z(image_angle + openAng);
 d3d_transform_add_translation(x + x_off, y + y_off, z);

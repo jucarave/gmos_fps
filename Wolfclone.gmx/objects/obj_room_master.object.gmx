@@ -82,7 +82,9 @@ ds_grid_destroy(ceil_z_grid);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var _x = obj_player.x;
+            <string>if (view_current != 0){ exit; }
+
+var _x = obj_player.x;
 var _y = obj_player.y;
 var _z = obj_player.z + obj_player.height + obj_player.jog;
 

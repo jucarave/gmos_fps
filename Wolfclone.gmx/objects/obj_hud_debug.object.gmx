@@ -204,7 +204,9 @@ if (open &amp;&amp; keyboard_check_pressed(vk_anykey)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var c1 = make_color_rgb(66,66,66);
+            <string>if (view_current != 1){ exit; }
+
+var c1 = make_color_rgb(66,66,66);
 var c2 = make_color_rgb(0,0,0);
 
 draw_rectangle_colour(0,y_pos,640,y_pos+200,c1,c1,c2,c2,false);

@@ -99,10 +99,10 @@
     <scripts name="System">
       <script>scripts\scr_init_system.gml</script>
       <script>scripts\scr_init_configuration.gml</script>
+      <script>scripts\scr_create_weapons.gml</script>
       <script>scripts\scr_collision_box.gml</script>
       <script>scripts\scr_subscribe_box_collision.gml</script>
       <script>scripts\scr_string_split.gml</script>
-      <script>scripts\scr_create_weapons.gml</script>
       <script>scripts\scr_get_weapon.gml</script>
     </scripts>
     <scripts name="World Parser">
@@ -128,7 +128,6 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_skybox.shader</shader>
-    <shader type="GLSLES">shaders\shd_hud.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_Debug</font>
@@ -139,6 +138,7 @@
       <object>objects\obj_room_master</object>
       <object>objects\obj_layer_configuration</object>
       <object>objects\obj_hud_debug</object>
+      <object>objects\obj_hud</object>
     </objects>
     <objects name="World">
       <object>objects\obj_solid</object>

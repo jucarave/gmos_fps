@@ -54,7 +54,9 @@ ceil_model = global._CEIL;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i=1;i&lt;floors_count;i+=1){
+            <string>if (view_current != 0){ exit; }
+
+for (var i=1;i&lt;floors_count;i+=1){
     var _x = floors[i, 0];
     var _y = floors[i, 1];
     var _z = floors[i, 2];
