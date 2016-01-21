@@ -104,6 +104,7 @@
       <script>scripts\scr_subscribe_box_collision.gml</script>
       <script>scripts\scr_string_split.gml</script>
       <script>scripts\scr_get_weapon.gml</script>
+      <script>scripts\scr_mix.gml</script>
     </scripts>
     <scripts name="World Parser">
       <script>scripts\scr_parse_tiles.gml</script>
@@ -159,7 +160,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="54">
+  <constants number="56">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -214,6 +215,8 @@
     <constant name="WP_SLOT">1</constant>
     <constant name="WP_MODEL">2</constant>
     <constant name="WP_TEXTURE">3</constant>
+    <constant name="ANIM_WP_IDDLE">0</constant>
+    <constant name="ANIM_WP_LOAD">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

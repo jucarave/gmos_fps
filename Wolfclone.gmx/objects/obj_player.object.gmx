@@ -318,26 +318,14 @@ if (state == SM_STAND || state == SM_CROUCH || state == SM_RUN){
         move_acl = 0.5;
         move_dir = dir;
         move_frc = 1;
-    }else{
-        move_frc = 0.85;
-        move_acl = 0;
-    }
-}
-
-/*if (state == SM_STAND || state == SM_CROUCH || state == SM_RUN){
-    var dir = scr_get_input_direction();
-    
-    if (dir != -1 ){
-        var spd = 3;
-        if (state == SM_CROUCH){ spd = 1.5; }else
-        if (state == SM_RUN){ spd = 5; }
-        
-        scr_move_to(dir, spd);
         
         jog += jog_dir * 0.3;
         if (jog &gt;= 2 &amp;&amp; jog_dir == 1){ jog = 2; jog_dir = -1; }
         if (jog &lt;= -2 &amp;&amp; jog_dir == -1){ jog = -2; jog_dir = 1; }
     }else{
+        move_frc = 0.85;
+        move_acl = 0;
+        
         if (jog != 0){
             if (jog &gt; 0) dir = -1; else dir = 1;
             
@@ -346,7 +334,7 @@ if (state == SM_STAND || state == SM_CROUCH || state == SM_RUN){
             if (jog &gt;= 0 &amp;&amp; dir == 1){ jog = 0; jog_dir = 1; }
         }
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

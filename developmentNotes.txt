@@ -2,8 +2,11 @@
 
 * Doing
 
++ Equip handgun animation
+
 * Features to develop
 
++ Fix running crouch
 + Fire with weapons
 + Add decals bullet holes
 + Pick ammunition
@@ -12,6 +15,7 @@
 + Add wall switches
 + Lock doors by keys or switches
 + Improve subscription of box collitions (by sectors)
++ Load models from binary files
 
 * Completed tasks
 
