@@ -32,6 +32,8 @@
 + Pick items from the world
 + Create weapons
 + Fix find znear floor (not point but rectangle)
++ Z collision to pick items
++ Add friction to movement 
 
 git config http.postBuffer 524288000
 git push
