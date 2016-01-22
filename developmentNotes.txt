@@ -2,10 +2,9 @@
 
 * Doing
 
-+ Equip handgun animation
-
 * Features to develop
 
++ Frustum culling
 + Fix running crouch
 + Fire with weapons
 + Add decals bullet holes
@@ -38,6 +37,7 @@
 + Fix find znear floor (not point but rectangle)
 + Z collision to pick items
 + Add friction to movement 
++ Equip handgun animation
 
 git config http.postBuffer 524288000
 git push

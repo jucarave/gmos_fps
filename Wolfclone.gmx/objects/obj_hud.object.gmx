@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weapon_anim = ANIM_WP_IDDLE;
+            <string>weapon_anim = WP_IDDLE;
 weapon_key_ind = 0;
-weapon_key_num = 4;
 weapon_loop = false;
 </string>
           </argument>
@@ -51,11 +50,18 @@ weapon_loop = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (weapon_anim == ANIM_WP_LOAD){
-    weapon_key_ind += 0.20;
-    if (weapon_key_ind &gt;= weapon_key_num){ 
-        weapon_anim = ANIM_WP_IDDLE;
-        weapon_key_ind = 3;
+            <string>if (global._PL_WEAPONS[global._SEL_WEAPON] == true){
+    var index = global._WEAPONS[global._SEL_WEAPON, weapon_anim];
+    
+    if (weapon_anim == WP_READY){
+        weapon_key_ind += 0.20;
+        if (weapon_key_ind &gt;= index[1]){ 
+            if (weapon_loop){
+                weapon_key_ind = index[1] - 1;
+            }else{
+                scr_switch_animation(WP_IDDLE);
+            }
+        }
     }
 }
 </string>
@@ -105,8 +111,7 @@ weapon_loop = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>weapon_anim = ANIM_WP_LOAD;
-weapon_key_ind = 0;
+            <string>scr_switch_animation(WP_READY);
 </string>
           </argument>
         </arguments>

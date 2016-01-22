@@ -1,17 +1,19 @@
 /*
- * scr_load_obj_model(filename)
+ * scr_load_obj_model(filename, modelIndex)
  *
  * argument[0]: filename of the 3D model (in .obj)
+ * argument[1]: Index to store the animation
  */
  
 var filename = argument[0];
+var modelIndex = argument[1];
 
 if (!file_exists(filename)){
     return -1;
 }
 
 var vertices, texCoords, faces;
-var vCount = 0, tCount = 0, fCount = 0;
+var vCount = 0, tCount = 0, fCount = 0, aCount = array_height_2d(global._ANIMATIONS) - 1;
 
 var file = file_text_open_read(filename);
 while (!file_text_eof(file)){
@@ -19,7 +21,7 @@ while (!file_text_eof(file)){
     var comment = (string_char_at(line, 0) == "#");
     
     if (line != "" && !comment){
-        var args = scr_string_split(line, " ", 4);
+        var args = scr_string_split(line, " ", 8);
     
         if (args[1] == "v"){
             vertices[vCount, 0] = real(args[2]);
@@ -35,6 +37,16 @@ while (!file_text_eof(file)){
             faces[fCount, 1] = args[3];
             faces[fCount, 2] = args[4];
             fCount += 1;
+        }else if (args[1] == "at"){
+            global._ANIMATIONS[aCount, 0] = modelIndex;
+            global._ANIMATIONS[aCount, 1] = real(args[2]);
+            global._ANIMATIONS[aCount, 2] = real(args[3]);
+            global._ANIMATIONS[aCount, 3] = real(args[4]);
+            global._ANIMATIONS[aCount, 4] = real(args[5]);
+            global._ANIMATIONS[aCount, 5] = real(args[6]);
+            global._ANIMATIONS[aCount, 6] = real(args[7]);
+            global._ANIMATIONS[aCount, 7] = real(args[8]);
+            aCount += 1;
         }
     }
 }

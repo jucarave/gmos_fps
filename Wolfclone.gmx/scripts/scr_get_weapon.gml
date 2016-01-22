@@ -1,6 +1,8 @@
 /*
  * scr_get_weapon(weaponSlot)
  *
+ * Is called from the instances of the weapons in the map to set their configuration
+ *
  * argument[0]: weapon slot constant
  */
  

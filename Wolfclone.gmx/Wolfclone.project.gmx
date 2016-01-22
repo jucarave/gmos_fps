@@ -3,12 +3,12 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="7" name="datafiles">
-    <datafiles number="7" name="Models_3D">
+  <datafiles number="9" name="datafiles">
+    <datafiles number="9" name="Models_3D">
       <datafile>
         <name>handGun.obj</name>
         <exists>-1</exists>
-        <size>3639</size>
+        <size>3768</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -95,15 +95,14 @@
       <script>scripts\scr_create_ceil.gml</script>
       <script>scripts\scr_create_door.gml</script>
       <script>scripts\scr_create_skybox.gml</script>
+      <script>scripts\scr_get_model_animations.gml</script>
     </scripts>
     <scripts name="System">
       <script>scripts\scr_init_system.gml</script>
       <script>scripts\scr_init_configuration.gml</script>
-      <script>scripts\scr_create_weapons.gml</script>
       <script>scripts\scr_collision_box.gml</script>
       <script>scripts\scr_subscribe_box_collision.gml</script>
       <script>scripts\scr_string_split.gml</script>
-      <script>scripts\scr_get_weapon.gml</script>
       <script>scripts\scr_mix.gml</script>
     </scripts>
     <scripts name="World Parser">
@@ -126,6 +125,12 @@
     <scripts name="Terminal">
       <script>scripts\scr_t_send_command.gml</script>
       <script>scripts\scr_t_add_to_console.gml</script>
+    </scripts>
+    <scripts name="Weapons">
+      <script>scripts\scr_create_weapons.gml</script>
+      <script>scripts\scr_switch_weapon.gml</script>
+      <script>scripts\scr_switch_animation.gml</script>
+      <script>scripts\scr_get_weapon.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -215,8 +220,8 @@
     <constant name="WP_SLOT">1</constant>
     <constant name="WP_MODEL">2</constant>
     <constant name="WP_TEXTURE">3</constant>
-    <constant name="ANIM_WP_IDDLE">0</constant>
-    <constant name="ANIM_WP_LOAD">1</constant>
+    <constant name="WP_IDDLE">4</constant>
+    <constant name="WP_READY">5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -16,20 +16,21 @@ if (global._PL_WEAPONS[weapon] == true){
     var key2 = key + 1;
     var tween = hud.weapon_key_ind - key;
     
-    if (key2 >= hud.weapon_key_num){ 
+    var wp_index = global._WEAPONS[global._SEL_WEAPON, hud.weapon_anim];
+    if (key2 >= wp_index[1]){ 
         if (hud.weapon_loop){
-            key2 = 0;
+            key2 = wp_index[0];
         }else{
-            key2 = hud.weapon_key_num - 1;
+            key2 = wp_index[1] - 1;
         }
     }
     
-    var px = scr_mix(global._RDY_HGUN[key, 0], global._RDY_HGUN[key2, 0], tween);
-    var py = scr_mix(global._RDY_HGUN[key, 1], global._RDY_HGUN[key2, 1], tween);
-    var pz = scr_mix(global._RDY_HGUN[key, 2], global._RDY_HGUN[key2, 2], tween);
-    var rx = scr_mix(global._RDY_HGUN[key, 3], global._RDY_HGUN[key2, 3], tween);
-    var ry = scr_mix(global._RDY_HGUN[key, 4], global._RDY_HGUN[key2, 4], tween);
-    var rz = scr_mix(global._RDY_HGUN[key, 5], global._RDY_HGUN[key2, 5], tween);
+    var px = scr_mix(global._ANIMATIONS[key, 2], global._ANIMATIONS[key2, 2], tween);
+    var py = scr_mix(global._ANIMATIONS[key, 3], global._ANIMATIONS[key2, 3], tween);
+    var pz = scr_mix(global._ANIMATIONS[key, 4], global._ANIMATIONS[key2, 4], tween);
+    var rx = scr_mix(global._ANIMATIONS[key, 5], global._ANIMATIONS[key2, 5], tween);
+    var ry = scr_mix(global._ANIMATIONS[key, 6], global._ANIMATIONS[key2, 6], tween);
+    var rz = scr_mix(global._ANIMATIONS[key, 7], global._ANIMATIONS[key2, 7], tween);
 
     d3d_transform_set_identity();
     
