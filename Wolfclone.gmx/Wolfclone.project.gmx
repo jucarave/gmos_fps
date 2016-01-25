@@ -77,6 +77,9 @@
     <backgrounds name="Objects">
       <background>background\tex_handGun</background>
     </backgrounds>
+    <backgrounds name="Misc">
+      <background>background\tex_bullet_hole</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -96,6 +99,7 @@
       <script>scripts\scr_create_door.gml</script>
       <script>scripts\scr_create_skybox.gml</script>
       <script>scripts\scr_get_model_animations.gml</script>
+      <script>scripts\scr_build_bullet_holes.gml</script>
     </scripts>
     <scripts name="System">
       <script>scripts\scr_init_system.gml</script>
@@ -155,7 +159,7 @@
       <object>objects\obj_block</object>
       <object>objects\obj_floors</object>
       <object>objects\obj_door</object>
-      <object>objects\obj_bullet</object>
+      <object>objects\obj_decals</object>
       <objects name="Items">
         <object>objects\obj_item</object>
         <object>objects\obj_weapon</object>

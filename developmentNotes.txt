@@ -2,14 +2,14 @@
 
 * Doing
 
-+ Fire with weapons
+
 
 * Features to develop
 
++ Crop bullet holes to grid limit
 + Move animations to object itself
 + UI Console messages
 + Frustum culling
-+ Add decals bullet holes
 + Pick ammunition
 + Create enemies
 + Create debris and enviromental objects
@@ -41,6 +41,8 @@
 + Add friction to movement 
 + Equip handgun animation
 + Fix running crouch
++ Fire with weapons
++ Add decals bullet holes
 
 git config http.postBuffer 524288000
 git push

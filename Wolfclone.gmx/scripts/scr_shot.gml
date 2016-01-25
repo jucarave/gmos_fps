@@ -16,8 +16,25 @@ if (hit[0] != -1){
     if (ins.object_index == obj_block){
         var _z = hit[3];
         if (_z > ins.z - GRID_HW && _z < ins.z + GRID_HW + ((ins.height - 1) * GRID_W)){
-            var bullet = instance_create(hit[1],hit[2],obj_bullet);
-            bullet.z = hit[3];
+            var dir = 0;
+            if (hit[1] == floor(hit[1])){ dir = 1; }
+            
+            var side = 0;
+            if (dir == 0 && hit[2] < y){ side = 1; }else
+            if (dir == 1 && hit[1] < x){ side = 1; }
+        
+            var decals = instance_find(obj_decals, 0);
+            var n = decals.decals_num++;
+            
+            decals.decals[n, 0] = hit[1];
+            decals.decals[n, 1] = hit[2];
+            decals.decals[n, 2] = hit[3];
+            decals.decals[n, 3] = dir;
+            decals.decals[n, 4] = side;
+            
+            with (decals){
+                scr_build_bullet_holes();
+            }
         }
     }
 }
