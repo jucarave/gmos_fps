@@ -48,6 +48,8 @@ prev_grid_y = floor(y / GRID_W);
 
 state = SM_STAND;
 
+hud = instance_find(obj_hud, 0);
+
 screenX = window_get_x() + 320;
 screenY = window_get_y() + 240;
 
@@ -177,7 +179,7 @@ if (state == SM_STAND){
 }
 
 // Running with keyboard
-if (state == SM_STAND){
+if (state == SM_STAND &amp;&amp; height == 16){
     if (keyboard_check(vk_shift)){
         state = SM_RUN;
         top_spd = 5;
@@ -466,6 +468,30 @@ if ((state == SM_STAND || state == SM_RUN) &amp;&amp; keyboard_check_pressed(vk_
     }
     
     state = SM_JUMP;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Firing with mouse
+if (mouse_check_button(mb_left) &amp;&amp; hud.state == WP_SM_IDDLE){
+    scr_shot();
 }
 </string>
           </argument>

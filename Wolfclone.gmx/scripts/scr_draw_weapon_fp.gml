@@ -44,6 +44,6 @@ if (global._PL_WEAPONS[weapon] == true){
     
     d3d_transform_add_translation(x,y,_z);
     d3d_model_draw(wp_model, 0,0,0, wp_tex);
-    // d3d_draw_block(-50,-0.2,1.0,200,0.2,1.25,-1,1,1);
+    //d3d_draw_block(-50,-0.2,1.0,200,0.2,1.25,-1,1,1);
     d3d_transform_set_identity();
 }

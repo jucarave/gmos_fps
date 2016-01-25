@@ -12,7 +12,7 @@ if (!file_exists(filename)){
     return -1;
 }
 
-var vertices, texCoords, faces;
+var vertices, texCoords, faces, socket;
 var vCount = 0, tCount = 0, fCount = 0, aCount = array_height_2d(global._ANIMATIONS) - 1;
 
 var file = file_text_open_read(filename);
@@ -47,6 +47,10 @@ while (!file_text_eof(file)){
             global._ANIMATIONS[aCount, 6] = real(args[7]);
             global._ANIMATIONS[aCount, 7] = real(args[8]);
             aCount += 1;
+        }else if (args[1] == "bs"){
+            socket[0] = real(args[2]);
+            socket[1] = real(args[3]);
+            socket[2] = real(args[4]);
         }
     }
 }
@@ -77,4 +81,9 @@ for (var i=0;i<fCount;i++){
 
 d3d_model_primitive_end(model);
 
-return model;
+var ret;
+
+ret[0] = model;
+ret[1] = socket;
+
+return ret;

@@ -2,11 +2,13 @@
 
 * Doing
 
++ Fire with weapons
+
 * Features to develop
 
++ Move animations to object itself
++ UI Console messages
 + Frustum culling
-+ Fix running crouch
-+ Fire with weapons
 + Add decals bullet holes
 + Pick ammunition
 + Create enemies
@@ -38,6 +40,7 @@
 + Z collision to pick items
 + Add friction to movement 
 + Equip handgun animation
++ Fix running crouch
 
 git config http.postBuffer 524288000
 git push

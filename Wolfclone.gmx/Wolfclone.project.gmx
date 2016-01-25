@@ -3,12 +3,12 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="9" name="datafiles">
-    <datafiles number="9" name="Models_3D">
+  <datafiles number="16" name="datafiles">
+    <datafiles number="16" name="Models_3D">
       <datafile>
         <name>handGun.obj</name>
         <exists>-1</exists>
-        <size>3768</size>
+        <size>3859</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -101,9 +101,11 @@
       <script>scripts\scr_init_system.gml</script>
       <script>scripts\scr_init_configuration.gml</script>
       <script>scripts\scr_collision_box.gml</script>
+      <script>scripts\scr_collision_line_box.gml</script>
       <script>scripts\scr_subscribe_box_collision.gml</script>
       <script>scripts\scr_string_split.gml</script>
       <script>scripts\scr_mix.gml</script>
+      <script>scripts\scr_ray_trace.gml</script>
     </scripts>
     <scripts name="World Parser">
       <script>scripts\scr_parse_tiles.gml</script>
@@ -121,6 +123,7 @@
       <script>scripts\scr_pick_weapon.gml</script>
       <script>scripts\scr_draw_weapon_fp.gml</script>
       <script>scripts\scr_find_z_floor.gml</script>
+      <script>scripts\scr_shot.gml</script>
     </scripts>
     <scripts name="Terminal">
       <script>scripts\scr_t_send_command.gml</script>
@@ -152,6 +155,7 @@
       <object>objects\obj_block</object>
       <object>objects\obj_floors</object>
       <object>objects\obj_door</object>
+      <object>objects\obj_bullet</object>
       <objects name="Items">
         <object>objects\obj_item</object>
         <object>objects\obj_weapon</object>
@@ -165,7 +169,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="56">
+  <constants number="61">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -219,9 +223,14 @@
     <constant name="WP_NAME">0</constant>
     <constant name="WP_SLOT">1</constant>
     <constant name="WP_MODEL">2</constant>
-    <constant name="WP_TEXTURE">3</constant>
-    <constant name="WP_IDDLE">4</constant>
-    <constant name="WP_READY">5</constant>
+    <constant name="WP_SOCKET">3</constant>
+    <constant name="WP_TEXTURE">4</constant>
+    <constant name="WP_IDDLE">5</constant>
+    <constant name="WP_READY">6</constant>
+    <constant name="WP_FIRE">7</constant>
+    <constant name="WP_SM_IDDLE">0</constant>
+    <constant name="WP_SM_DRAW">1</constant>
+    <constant name="WP_SM_FIRE">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

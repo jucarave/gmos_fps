@@ -28,6 +28,8 @@
             <string>weapon_anim = WP_IDDLE;
 weapon_key_ind = 0;
 weapon_loop = false;
+
+state = WP_SM_IDDLE;
 </string>
           </argument>
         </arguments>
@@ -53,16 +55,46 @@ weapon_loop = false;
             <string>if (global._PL_WEAPONS[global._SEL_WEAPON] == true){
     var index = global._WEAPONS[global._SEL_WEAPON, weapon_anim];
     
-    if (weapon_anim == WP_READY){
+    if (index[1] - index[0] &gt; 1){
         weapon_key_ind += 0.20;
         if (weapon_key_ind &gt;= index[1]){ 
             if (weapon_loop){
-                weapon_key_ind = index[1] - 1;
+                weapon_key_ind = index[0];
             }else{
-                scr_switch_animation(WP_IDDLE);
+                event_user(0);
             }
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Animation end
+if (state == WP_SM_DRAW){
+    scr_switch_animation(WP_IDDLE);
+    state = WP_SM_IDDLE;
+}else if (state == WP_SM_FIRE){
+    scr_switch_animation(WP_IDDLE);
+    state = WP_SM_IDDLE;
 }
 </string>
           </argument>
@@ -112,6 +144,7 @@ weapon_loop = false;
           <argument>
             <kind>1</kind>
             <string>scr_switch_animation(WP_READY);
+state = WP_SM_DRAW;
 </string>
           </argument>
         </arguments>

@@ -9,4 +9,5 @@ global._SEL_WEAPON = weaponIndex;
 
 with (obj_hud){
     scr_switch_animation(WP_READY);
+    state = WP_SM_DRAW;
 }
