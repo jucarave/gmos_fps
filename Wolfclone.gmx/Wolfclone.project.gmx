@@ -38,6 +38,9 @@
     <sprites name="System">
       <sprite>sprites\spr_layer_configuration</sprite>
     </sprites>
+    <sprites name="hud">
+      <sprite>sprites\spr_crosshair</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Tiles">

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -55,9 +55,9 @@ tex = background_get_texture(tex_bullet_hole);
             <string>if (view_current != 0) exit;
 if (bullet_holes == -1) exit;
 
-d3d_set_culling(false);
+d3d_set_zwriteenable(false);
 d3d_model_draw(bullet_holes, 0, 0, 0, tex);
-d3d_set_culling(true);
+d3d_set_zwriteenable(true);
 </string>
           </argument>
         </arguments>

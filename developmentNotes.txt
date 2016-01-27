@@ -3,10 +3,8 @@
 * Doing
 
 
-
 * Features to develop
 
-+ Crop bullet holes to grid limit
 + Move animations to object itself
 + UI Console messages
 + Frustum culling
@@ -17,6 +15,8 @@
 + Lock doors by keys or switches
 + Improve subscription of box collitions (by sectors)
 + Load models from binary files
++ Merge walls geometry to minimum calls
++ Merge wall instances to minimum number
 
 * Completed tasks
 
@@ -43,6 +43,7 @@
 + Fix running crouch
 + Fire with weapons
 + Add decals bullet holes
++ Crop bullet holes to grid limit
 
 git config http.postBuffer 524288000
 git push

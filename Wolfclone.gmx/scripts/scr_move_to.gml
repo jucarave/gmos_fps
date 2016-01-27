@@ -19,12 +19,12 @@ var ofy = size;
 if (xTo < 0) ofx = -size;
 if (yTo < 0) ofy = -size;
 
-var ins = scr_collision_box(x, y-size, z, (x+ofx)+(xTo*6), y+size, z+GRID_HW);
+var ins = scr_collision_box(x, y-size, z, (x+ofx)+(xTo*6), y+size, z+GRID_HW, false);
 if (!ins){
     x += xTo * spd;
 }
 
-var ins = scr_collision_box(x-size, y, z, x+size, (y-ofy)-(yTo*6), z+GRID_HW);
+var ins = scr_collision_box(x-size, y, z, x+size, (y-ofy)-(yTo*6), z+GRID_HW, false);
 if (!ins){
     y -= yTo * spd;
 }
