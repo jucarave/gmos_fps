@@ -113,6 +113,8 @@
       <script>scripts\scr_string_split.gml</script>
       <script>scripts\scr_mix.gml</script>
       <script>scripts\scr_ray_trace.gml</script>
+      <script>scripts\scr_add_message.gml</script>
+      <script>scripts\scr_splice_messages.gml</script>
     </scripts>
     <scripts name="World Parser">
       <script>scripts\scr_parse_tiles.gml</script>

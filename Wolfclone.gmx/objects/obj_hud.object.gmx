@@ -30,6 +30,11 @@ weapon_key_ind = 0;
 weapon_loop = false;
 
 state = WP_SM_IDDLE;
+
+for (var i=0;i&lt;5;i++){
+    messages[i, 0] = "";
+    messages[i, 1] = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -63,6 +68,35 @@ state = WP_SM_IDDLE;
             }else{
                 event_user(0);
             }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (var i=0;i&lt;5;i++){
+    if (messages[i, 1] &gt; 0){
+        messages[i, 1] -= 1;
+        if (messages[i, 1] == 0){
+            messages = scr_splice_messages(messages, i);
+            i--;
         }
     }
 }
@@ -118,7 +152,15 @@ if (state == WP_SM_DRAW){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_crosshair, 0, 320, 240);
+            <string>draw_set_color(c_white);
+
+for (var i=0;i&lt;5;i++){
+    if (messages[i, 0] != ""){
+        draw_text(0,i*12,messages[i, 0]);
+    }
+}
+
+draw_sprite(spr_crosshair, 0, 320, 240);
 </string>
           </argument>
         </arguments>

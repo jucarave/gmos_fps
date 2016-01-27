@@ -7,3 +7,5 @@
 var weapon = argument[0];
 global._PL_WEAPONS[weapon.slot] = true;
 scr_switch_weapon(weapon.slot);
+
+scr_add_message(global._WEAPONS[weapon.slot, WP_NAME] + " picked up");

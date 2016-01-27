@@ -2,11 +2,9 @@
 
 * Doing
 
-
 * Features to develop
 
 + Move animations to object itself
-+ UI Console messages
 + Frustum culling
 + Pick ammunition
 + Create enemies
@@ -17,6 +15,7 @@
 + Load models from binary files
 + Merge walls geometry to minimum calls
 + Merge wall instances to minimum number
++ Limit bullet holes to 200
 
 * Completed tasks
 
@@ -44,6 +43,7 @@
 + Fire with weapons
 + Add decals bullet holes
 + Crop bullet holes to grid limit
++ UI Console messages
 
 git config http.postBuffer 524288000
 git push
