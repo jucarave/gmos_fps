@@ -161,6 +161,8 @@ for (var i=0;i&lt;5;i++){
 }
 
 draw_sprite(spr_crosshair, 0, 320, 240);
+
+draw_text(0,view_hview[0] - 12, "Ammunition: " + string(global._PL_AMMO[WP_HGUN]));
 </string>
           </argument>
         </arguments>

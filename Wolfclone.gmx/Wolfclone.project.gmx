@@ -31,6 +31,7 @@
       <sprite>sprites\spr_Wall</sprite>
       <sprite>sprites\spr_Door</sprite>
       <sprite>sprites\spr_Weapon</sprite>
+      <sprite>sprites\spr_Ammunition</sprite>
     </sprites>
     <sprites name="Actors">
       <sprite>sprites\spr_player</sprite>
@@ -142,7 +143,8 @@
       <script>scripts\scr_create_weapons.gml</script>
       <script>scripts\scr_switch_weapon.gml</script>
       <script>scripts\scr_switch_animation.gml</script>
-      <script>scripts\scr_get_weapon.gml</script>
+      <script>scripts\scr_set_weapon.gml</script>
+      <script>scripts\scr_set_ammunition.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -168,6 +170,7 @@
       <objects name="Items">
         <object>objects\obj_item</object>
         <object>objects\obj_weapon</object>
+        <object>objects\obj_bullets</object>
       </objects>
     </objects>
     <objects name="Actors">
@@ -178,7 +181,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="62">
+  <constants number="63">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -228,6 +231,7 @@
     <constant name="LY_WALL_L">4</constant>
     <constant name="LY_WALL_T">5</constant>
     <constant name="IT_WEAPON">0</constant>
+    <constant name="IT_AMMO">1</constant>
     <constant name="WP_HGUN">0</constant>
     <constant name="WP_NAME">0</constant>
     <constant name="WP_SLOT">1</constant>

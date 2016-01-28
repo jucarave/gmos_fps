@@ -4,6 +4,9 @@
  */
  
 if (!global._PL_WEAPONS[global._SEL_WEAPON]) exit;
+if (global._PL_AMMO[global._SEL_WEAPON] == 0) exit;
+
+global._PL_AMMO[global._SEL_WEAPON] -= 1;
 
 with (hud){
     scr_switch_animation(WP_FIRE);
