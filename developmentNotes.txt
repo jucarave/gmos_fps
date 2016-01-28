@@ -4,7 +4,6 @@
 
 * Features to develop
 
-+ Move animations to object itself
 + Frustum culling
 + Pick ammunition
 + Create enemies
@@ -44,6 +43,7 @@
 + Add decals bullet holes
 + Crop bullet holes to grid limit
 + UI Console messages
++ Move animations to object itself
 
 git config http.postBuffer 524288000
 git push

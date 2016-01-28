@@ -178,7 +178,7 @@
     <room>rooms\roo_init</room>
     <room>rooms\roo_test</room>
   </rooms>
-  <constants number="61">
+  <constants number="62">
     <constant name="WALL_3D">0</constant>
     <constant name="WALL_TL">1</constant>
     <constant name="WALL_T">2</constant>
@@ -232,11 +232,12 @@
     <constant name="WP_NAME">0</constant>
     <constant name="WP_SLOT">1</constant>
     <constant name="WP_MODEL">2</constant>
-    <constant name="WP_SOCKET">3</constant>
-    <constant name="WP_TEXTURE">4</constant>
-    <constant name="WP_IDDLE">5</constant>
-    <constant name="WP_READY">6</constant>
-    <constant name="WP_FIRE">7</constant>
+    <constant name="WP_ANIMATION">3</constant>
+    <constant name="WP_SOCKET">4</constant>
+    <constant name="WP_TEXTURE">5</constant>
+    <constant name="WP_IDDLE">6</constant>
+    <constant name="WP_READY">7</constant>
+    <constant name="WP_FIRE">8</constant>
     <constant name="WP_SM_IDDLE">0</constant>
     <constant name="WP_SM_DRAW">1</constant>
     <constant name="WP_SM_FIRE">2</constant>

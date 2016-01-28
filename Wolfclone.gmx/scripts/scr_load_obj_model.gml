@@ -12,8 +12,8 @@ if (!file_exists(filename)){
     return -1;
 }
 
-var vertices, texCoords, faces, socket;
-var vCount = 0, tCount = 0, fCount = 0, aCount = array_height_2d(global._ANIMATIONS) - 1;
+var vertices, texCoords, faces, animations, socket;
+var vCount = 0, tCount = 0, fCount = 0, aCount = 0;
 
 var file = file_text_open_read(filename);
 while (!file_text_eof(file)){
@@ -38,14 +38,13 @@ while (!file_text_eof(file)){
             faces[fCount, 2] = args[4];
             fCount += 1;
         }else if (args[1] == "at"){
-            global._ANIMATIONS[aCount, 0] = modelIndex;
-            global._ANIMATIONS[aCount, 1] = real(args[2]);
-            global._ANIMATIONS[aCount, 2] = real(args[3]);
-            global._ANIMATIONS[aCount, 3] = real(args[4]);
-            global._ANIMATIONS[aCount, 4] = real(args[5]);
-            global._ANIMATIONS[aCount, 5] = real(args[6]);
-            global._ANIMATIONS[aCount, 6] = real(args[7]);
-            global._ANIMATIONS[aCount, 7] = real(args[8]);
+            animations[aCount, 0] = real(args[2]);
+            animations[aCount, 1] = real(args[3]);
+            animations[aCount, 2] = real(args[4]);
+            animations[aCount, 3] = real(args[5]);
+            animations[aCount, 4] = real(args[6]);
+            animations[aCount, 5] = real(args[7]);
+            animations[aCount, 6] = real(args[8]);
             aCount += 1;
         }else if (args[1] == "bs"){
             socket[0] = real(args[2]);
@@ -84,6 +83,7 @@ d3d_model_primitive_end(model);
 var ret;
 
 ret[0] = model;
-ret[1] = socket;
+ret[1] = animations;
+ret[2] = socket;
 
 return ret;

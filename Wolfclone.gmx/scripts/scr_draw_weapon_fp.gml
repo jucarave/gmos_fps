@@ -25,12 +25,13 @@ if (global._PL_WEAPONS[weapon] == true){
         }
     }
     
-    var px = scr_mix(global._ANIMATIONS[key, 2], global._ANIMATIONS[key2, 2], tween);
-    var py = scr_mix(global._ANIMATIONS[key, 3], global._ANIMATIONS[key2, 3], tween);
-    var pz = scr_mix(global._ANIMATIONS[key, 4], global._ANIMATIONS[key2, 4], tween);
-    var rx = scr_mix(global._ANIMATIONS[key, 5], global._ANIMATIONS[key2, 5], tween);
-    var ry = scr_mix(global._ANIMATIONS[key, 6], global._ANIMATIONS[key2, 6], tween);
-    var rz = scr_mix(global._ANIMATIONS[key, 7], global._ANIMATIONS[key2, 7], tween);
+    var animations = global._WEAPONS[global._SEL_WEAPON, WP_ANIMATION];
+    var px = scr_mix(animations[key, 1], animations[key2, 1], tween);
+    var py = scr_mix(animations[key, 2], animations[key2, 2], tween);
+    var pz = scr_mix(animations[key, 3], animations[key2, 3], tween);
+    var rx = scr_mix(animations[key, 4], animations[key2, 4], tween);
+    var ry = scr_mix(animations[key, 5], animations[key2, 5], tween);
+    var rz = scr_mix(animations[key, 6], animations[key2, 6], tween);
 
     d3d_transform_set_identity();
     
