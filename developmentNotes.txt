@@ -2,6 +2,8 @@
 
 * Doing
 
++ Merge world geometry to minimum calls
+
 * Features to develop
 
 + Frustum culling
@@ -11,10 +13,10 @@
 + Lock doors by keys or switches
 + Improve subscription of box collitions (by sectors)
 + Load models from binary files
-+ Merge walls geometry to minimum calls
 + Merge wall instances to minimum number
 + Limit bullet holes to 200
 + Create network gameplay
++ Add sounds to handgun
 
 * Completed tasks
 

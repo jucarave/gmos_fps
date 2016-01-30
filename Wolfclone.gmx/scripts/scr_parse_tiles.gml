@@ -49,4 +49,20 @@ for (var i=0;i<len;i+=1){
 }
 
 // Add walls under floors
-scr_add_under_floor_walls();
+// scr_add_under_floor_walls();
+
+// Finish geometries
+for (var i=0;i<obj_walls.walls_count;i++){
+    var model = obj_walls.walls[i, 1];
+    d3d_model_primitive_end(model);
+}
+
+for (var i=0;i<obj_floors.floors_count;i++){
+    var model = obj_floors.floors[i, 1];
+    d3d_model_primitive_end(model);
+}
+
+for (var i=0;i<obj_floors.ceils_count;i++){
+    var model = obj_floors.ceils[i, 1];
+    d3d_model_primitive_end(model);
+}

@@ -172,6 +172,7 @@
         <object>objects\obj_weapon</object>
         <object>objects\obj_bullets</object>
       </objects>
+      <object>objects\obj_walls</object>
     </objects>
     <objects name="Actors">
       <object>objects\obj_player</object>

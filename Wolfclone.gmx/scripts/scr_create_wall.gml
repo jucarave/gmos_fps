@@ -1,63 +1,67 @@
 /*
- * scr_create_wall(size, left, top, right, bottom)
+ * scr_create_wall(model, size, x, y, z, height, left, top, right, bottom)
  *
- * argument[0]: Size of the cube (widht, height, length)
- * argument[1]: Include left wall (-x)
- * arugment[2]: Include top wall (-y)
- * argument[3]: Include right wall (+x)
- * argument[4]: Include bottom wall (+y)
+ * argument[0]: Model to add the vertices
+ * argument[1]: Size of the cube (widht, height, length)
+ * argument[2]: X position of the wall
+ * argument[3]: Y position of the wall
+ * argument[4]: Z Position of the wall
+ * argument[5]: Height of the wall
+ * argument[5]: Include left wall (-x)
+ * arugment[6]: Include top wall (-y)
+ * argument[7]: Include right wall (+x)
+ * argument[8]: Include bottom wall (+y)
  */
 
-var size = argument[0] / 2;
-var lw = argument[1];
-var tw = argument[2];
-var rw = argument[3];
-var bw = argument[4];
+var model = argument[0];
+var size = argument[1] / 2;
+var _x = argument[2];
+var _y = argument[3];
+var _z = argument[4];
+var h = (argument[5] - 1) * argument[1];
+var lw = argument[6];
+var tw = argument[7];
+var rw = argument[8];
+var bw = argument[9];
 
-var model = d3d_model_create();
-
-d3d_model_primitive_begin(model, pr_trianglelist);
+var ty = argument[5];
 
 // Front face
 if (bw){
-    d3d_model_vertex_texture(model, -size,  size, -size, 0, 1);
-    d3d_model_vertex_texture(model, -size,  size,  size, 0, 0);
-    d3d_model_vertex_texture(model,  size,  size, -size, 1, 1);
-    d3d_model_vertex_texture(model, -size,  size,  size, 0, 0);
-    d3d_model_vertex_texture(model,  size,  size,  size, 1, 0);
-    d3d_model_vertex_texture(model,  size,  size, -size, 1, 1);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z+size+h, 0, 0);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z-size,   1, ty);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z+size+h, 0, 0);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z-size,   1, ty);
 }
 
 // Back face
 if (tw){
-    d3d_model_vertex_texture(model, -size, -size, -size, 1, 1);
-    d3d_model_vertex_texture(model,  size, -size, -size, 0, 1);
-    d3d_model_vertex_texture(model, -size, -size,  size, 1, 0);
-    d3d_model_vertex_texture(model, -size, -size,  size, 1, 0);
-    d3d_model_vertex_texture(model,  size, -size, -size, 0, 1);
-    d3d_model_vertex_texture(model,  size, -size,  size, 0, 0);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z-size,   1, ty);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z+size+h, 0, 0);
 }
 
 // Left face
 if (lw){
-    d3d_model_vertex_texture(model, -size, -size, -size, 0, 1);
-    d3d_model_vertex_texture(model, -size, -size,  size, 0, 0);
-    d3d_model_vertex_texture(model, -size,  size, -size, 1, 1);
-    d3d_model_vertex_texture(model, -size, -size,  size, 0, 0);
-    d3d_model_vertex_texture(model, -size,  size,  size, 1, 0);
-    d3d_model_vertex_texture(model, -size,  size, -size, 1, 1);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z+size+h, 0, 0);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z-size,   1, ty);
+    d3d_model_vertex_texture(model, _x-size, _y-size, _z+size+h, 0, 0);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x-size, _y+size, _z-size,   1, ty);
 }
 
 // Right face
 if (rw){
-    d3d_model_vertex_texture(model,  size, -size, -size, 1, 1);
-    d3d_model_vertex_texture(model,  size,  size, -size, 0, 1);
-    d3d_model_vertex_texture(model,  size, -size,  size, 1, 0);
-    d3d_model_vertex_texture(model,  size, -size,  size, 1, 0);
-    d3d_model_vertex_texture(model,  size,  size, -size, 0, 1);
-    d3d_model_vertex_texture(model,  size,  size,  size, 0, 0);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z-size,   1, ty);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x+size, _y-size, _z+size+h, 1, 0);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z-size,   0, ty);
+    d3d_model_vertex_texture(model, _x+size, _y+size, _z+size+h, 0, 0);
 }
-
-d3d_model_primitive_end(model);
-
-return model;

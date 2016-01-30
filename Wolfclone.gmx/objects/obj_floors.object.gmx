@@ -26,12 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>floors[0] = -1;
-floors_count = 1;
-floor_model = global._FLOOR;
+floors_count = 0;
 
 ceils[0] = -1;
-ceils_count = 1;
-ceil_model = global._CEIL;
+ceils_count = 0;
 </string>
           </argument>
         </arguments>
@@ -56,32 +54,18 @@ ceil_model = global._CEIL;
             <kind>1</kind>
             <string>if (view_current != 0){ exit; }
 
-for (var i=1;i&lt;floors_count;i+=1){
-    var _x = floors[i, 0];
-    var _y = floors[i, 1];
-    var _z = floors[i, 2];
-    var tex = floors[i, 3];
+for (var i=0;i&lt;floors_count;i+=1){
+    var tex = floors[i, 0];
+    var model = floors[i, 1];
     
-    var dx = abs(_x - obj_player.x);
-    var dy = abs(_y - obj_player.y);
-    
-    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) continue;
-    
-    d3d_model_draw(floor_model, _x, _y, _z, tex);
+    d3d_model_draw(model, 0, 0, 0, tex);
 }
 
-for (var i=1;i&lt;ceils_count;i+=1){
-    var _x = ceils[i, 0];
-    var _y = ceils[i, 1];
-    var _z = ceils[i, 2];
-    var tex = ceils[i, 3];
+for (var i=0;i&lt;ceils_count;i+=1){
+    var tex = ceils[i, 0];
+    var model = ceils[i, 1];
     
-    var dx = abs(_x - obj_player.x);
-    var dy = abs(_y - obj_player.y);
-    
-    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) continue;
-    
-    d3d_model_draw(ceil_model, _x, _y, _z, tex);
+    d3d_model_draw(model, 0, 0, 0, tex);
 }
 </string>
           </argument>
