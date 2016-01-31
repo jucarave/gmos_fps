@@ -28,6 +28,7 @@ for (var xx=0;xx<room_width;xx+=32){
                         
                         case "Floor":
                             scr_parse_floor(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH]);
+                            scr_add_under_floor_walls(layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH]);
                             break;
                         
                         case "Ceil":
@@ -47,9 +48,6 @@ for (var i=0;i<len;i+=1){
         tile_layer_delete(layer.layers[j, LY_DEPTH]);
     }
 }
-
-// Add walls under floors
-// scr_add_under_floor_walls();
 
 // Finish geometries
 for (var i=0;i<obj_walls.walls_count;i++){

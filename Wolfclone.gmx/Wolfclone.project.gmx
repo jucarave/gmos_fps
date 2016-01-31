@@ -95,7 +95,6 @@
     </scripts>
     <scripts name="3DModels">
       <script>scripts\scr_create_3d_tiles.gml</script>
-      <script>scripts\scr_get_3d_tile_by_walls.gml</script>
       <script>scripts\scr_load_obj_model.gml</script>
       <script>scripts\scr_create_wall.gml</script>
       <script>scripts\scr_create_floor.gml</script>
