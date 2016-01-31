@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>z = 0;
 height = 1;
+
+color = make_color_rgb(irandom(256),irandom(256),irandom(256));
 </string>
           </argument>
         </arguments>
@@ -50,20 +52,15 @@ height = 1;
           <argument>
             <kind>1</kind>
             <string>exit;
-
-if (!visible){ exit; }
 if (view_current != 0){ exit; }
-if (block != -1){
-    var dx = abs(x - obj_player.x);
-    var dy = abs(y - obj_player.y);
-    
-    if (dx &gt; global._ZFAR || dy &gt; global._ZFAR) exit;
 
-    for (var i=0;i&lt;height;i+=1){
-        var zz = z + (i * GRID_W);
-        d3d_model_draw(block, x, y, zz, tex);
-    }
+draw_set_color(color);
+for (var i=0;i&lt;height;i+=1){
+    var zz = z + (i * GRID_W);
+    //d3d_model_draw(block, x, y, zz, tex);
+    d3d_draw_block(x,y,zz,x+GRID_W*image_xscale,y+GRID_W*image_yscale,zz+GRID_W,-1,1,1);
 }
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

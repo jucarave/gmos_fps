@@ -10,8 +10,8 @@ for (var i=0;i<len;i+=1){
 }
 
 
-for (var xx=0;xx<room_width;xx+=32){
-    for (var yy=0;yy<room_height;yy+=32){
+for (var xx=0;xx<room_width;xx+=GRID_W){
+    for (var yy=0;yy<room_height;yy+=GRID_W){
         // Read layer configurations
         for (var i=0;i<len;i+=1){
             var layer = layers[i];
@@ -28,7 +28,7 @@ for (var xx=0;xx<room_width;xx+=32){
                         
                         case "Floor":
                             scr_parse_floor(tile, xx, yy, layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH]);
-                            scr_add_under_floor_walls(layer.layers[k, LY_Z], layer.layers[k, LY_DEPTH]);
+                            scr_add_under_floor_walls(xx, yy, layer.layers[k, LY_Z], layer, layer.layers[k, LY_DEPTH]);
                             break;
                         
                         case "Ceil":
@@ -39,6 +39,11 @@ for (var xx=0;xx<room_width;xx+=32){
             }
         }
     }
+}
+
+with (obj_block){
+    var w = GRID_W;
+    scr_subscribe_box_collision(x,y,z,x+w*image_xscale,y+w*image_yscale,z+w*height);
 }
 
 // Delete 2D Layers

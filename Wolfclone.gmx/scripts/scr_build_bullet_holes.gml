@@ -30,10 +30,10 @@ for (var i=0;i<decals_num;i++){
     if (dir == 0 && side == 1){ ins_y_off = GRID_W; }
     if (dir == 1 && side == 1){ ins_x_off = GRID_W; }
     
-    var block = instance_position(gx - ins_x_off, gy - ins_y_off, obj_block);
-    var min_z = (block.z - GRID_HW);
+    var block = scr_collision_box(gx-ins_x_off-0.5, gy-ins_y_off-0.5, _z-0.5, gx-ins_x_off+0.5, gy-ins_y_off+0.5, _z+0.5, false);
+    var min_z = (block.z);
     var max_z = min_z + (block.height * GRID_W);
-        
+    
     var off = -0.1;
     if (side == 1) off = 0.1;
     

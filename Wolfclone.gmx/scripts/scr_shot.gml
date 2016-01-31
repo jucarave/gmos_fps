@@ -18,7 +18,7 @@ if (hit[0] != -1){
     var ins = hit[0];
     if (ins.object_index == obj_block){
         var _z = hit[3];
-        if (_z > ins.z - GRID_HW && _z < ins.z + GRID_HW + ((ins.height - 1) * GRID_W)){
+        if (_z > ins.z && _z < ins.z + GRID_W * ins.height){
             var dir = 0;
             if (hit[1] == floor(hit[1])){ dir = 1; }
             

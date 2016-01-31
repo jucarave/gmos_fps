@@ -11,7 +11,6 @@
 + Lock doors by keys or switches
 + Improve subscription of box collitions (by sectors)
 + Load models from binary files
-+ Merge wall instances to minimum number
 + Create network gameplay
 + Add sounds to handgun
 
@@ -46,6 +45,7 @@
 + Pick ammunition and limit weapons
 + Merge world geometry to minimum calls
 + Limit bullet holes to 200
++ Merge wall instances to minimum number
 
 git config http.postBuffer 524288000
 git push

@@ -13,22 +13,37 @@
  
 var xx = argument[0];
 var yy = argument[1];
-var z = argument[2] + GRID_HW;
+var z = argument[2];
 var left = argument[3];
 var top = argument[4];
 var _depth = argument[5];
 var height = argument[6];
 var _solid = argument[7];
 
-var block = instance_create(xx + GRID_HW, yy + GRID_HW, obj_block);
-block.z = z;
-block.height = height;
-block.solid = _solid;
+var add = true;
+var block_l = instance_position(xx - GRID_HW, yy + GRID_HW, obj_block);
+if (block_l && block_l.z == z && block_l.height == height){
+    if ((block_l.image_xscale == 1 && block_l.image_yscale == 1) || (block_l.image_xscale > 1 && block_l.image_yscale == 1)){
+        add = false;
+        block_l.image_xscale += 1;
+    }
+}
 
-with (block){
-    var w = GRID_HW;
-    var h = GRID_W * (height - 1);
-    scr_subscribe_box_collision(x-w,y-w,z-w,x+w,y+w,z+w+h);
+if (add){
+    var block_t = instance_position(xx + GRID_HW, yy - GRID_HW, obj_block);
+    if (block_t && block_t.z == z && block_t.height == height){
+        if ((block_t.image_xscale == 1 && block_t.image_yscale == 1) || (block_t.image_yscale > 1 && block_t.image_xscale == 1)){
+            add = false;
+            block_t.image_yscale += 1;
+        }
+    }
+}
+
+if (add){
+    var block = instance_create(xx, yy, obj_block);
+    block.z = z;
+    block.height = height;
+    block.solid = _solid;
 }
 
 var walls = scr_get_tile_surrounds(_depth, xx, yy);
@@ -52,4 +67,4 @@ if (wallModel == -1){
     obj_walls.walls_count += 1;
 }
 
-scr_create_wall(wallModel, GRID_W, xx + GRID_HW, yy + GRID_HW, z, height, walls[0], walls[1], walls[2], walls[3]);
+scr_create_wall(wallModel, GRID_W, xx + GRID_HW, yy + GRID_HW, z + GRID_HW, height, walls[0], walls[1], walls[2], walls[3]);
