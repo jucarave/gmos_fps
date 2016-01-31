@@ -163,6 +163,7 @@
     <objects name="World">
       <object>objects\obj_solid</object>
       <object>objects\obj_block</object>
+      <object>objects\obj_walls</object>
       <object>objects\obj_floors</object>
       <object>objects\obj_door</object>
       <object>objects\obj_decals</object>
@@ -171,7 +172,6 @@
         <object>objects\obj_weapon</object>
         <object>objects\obj_bullets</object>
       </objects>
-      <object>objects\obj_walls</object>
     </objects>
     <objects name="Actors">
       <object>objects\obj_player</object>

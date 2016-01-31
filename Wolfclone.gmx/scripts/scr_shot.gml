@@ -27,7 +27,8 @@ if (hit[0] != -1){
             if (dir == 1 && hit[1] < x){ side = 1; }
         
             var decals = instance_find(obj_decals, 0);
-            var n = decals.decals_num++;
+            decals.decals_num += 1;
+            var n = decals.decal_ind++;
             
             decals.decals[n, 0] = hit[1];
             decals.decals[n, 1] = hit[2];

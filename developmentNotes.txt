@@ -2,8 +2,6 @@
 
 * Doing
 
-+ Merge world geometry to minimum calls
-
 * Features to develop
 
 + Frustum culling
@@ -14,7 +12,6 @@
 + Improve subscription of box collitions (by sectors)
 + Load models from binary files
 + Merge wall instances to minimum number
-+ Limit bullet holes to 200
 + Create network gameplay
 + Add sounds to handgun
 
@@ -47,6 +44,8 @@
 + UI Console messages
 + Move animations to object itself
 + Pick ammunition and limit weapons
++ Merge world geometry to minimum calls
++ Limit bullet holes to 200
 
 git config http.postBuffer 524288000
 git push
